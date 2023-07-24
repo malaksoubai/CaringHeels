@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import I_SignInScreen from '../i_in';
+import I_SignUpScreen from '../i_up';
+
 
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = ({ navigation }) => {
+const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('./assets/CaringHeels.png')} />
@@ -38,26 +41,34 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-const I_SignUpScreen = () => {  // move this to a new page and connect them both
-  return (
-    <View style={styles.container}>
-      <Text>Sign Up Page for Individuals</Text>
-    </View>
-  );
-};
+// const I_SignUpScreen = () => {  // move this to a new page and connect them both
+//   return (
+//     <View style={styles.container}>
+//       <TouchableOpacity style={style.button} onPress={handleSignUp}>
+//         <Text style={style.buttonText}>Sign Up for Individuals</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
 
-const I_SignInScreen = () => {
-  return (
-    <View style={styles.background}>
-      <Text>Sign In Page for Individuals</Text>
-    </View>
-  );
-};
+// const I_SignInScreen = () => {
+//   return (
+//     <View style={styles.background}>
+//       <Text>Sign In Page for Individuals</Text>
+//     <div class="back-arrow">
+//     <a href="javascript:history.back()" class="arrow-link">
+//       <img src="white-arrow.png" alt="Back Arrow"/>
+//     </a>
+//     </div>
+//     </View>
+//   );
+// };
 
 const C_SignUpScreen = () => {
   return (
     <View style={styles.container}>
       <Text>Sign Up Page for Clubs</Text>
+
     </View>
   );
 };
@@ -66,6 +77,7 @@ const C_SignInScreen = () => {
   return (
     <View style={styles.background}>
       <Text>Sign In Page for Clubs</Text>
+      <i class="fa-regular fa-arrow-left"></i>
     </View>
   );
 };
@@ -73,11 +85,11 @@ const C_SignInScreen = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator screenOptions={{headerShown: false}} >
+        <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="I_SignUp" component={I_SignUpScreen} />
         <Stack.Screen name="I_SignIn" component={I_SignInScreen} />
-        <Stack.Screen name="C_SignUo" component={C_SignUpScreen} />
+        <Stack.Screen name="C_SignUp" component={C_SignUpScreen} />
         <Stack.Screen name="C_SignIn" component={C_SignInScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -99,8 +111,9 @@ const styles = StyleSheet.create({
   },
   appName: {
     color: '#FFFFFF',
-    fontSize: 20,
+    fontSize: 30,
     marginTop: 10,
+    marginBottom: 50,
   },
   button: {
     backgroundColor: '#13294B',
@@ -112,7 +125,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
 });
 
