@@ -65,11 +65,11 @@ const I_SignInScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
+      <Button
         onPress={StartScreen}
       >
         <Text style={styles.buttonText}>Back</Text>
-      </TouchableOpacity>
+      </Button>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -120,48 +120,60 @@ const I_SignUpScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.greyBackground}>
+      <TouchableOpacity onPress={() => navigation.navigate('Start')}>
+        <Text style={styles.backButton}>Back</Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>Individual Sign Up</Text>
+      <Text style={styles.subtitles}>First Name</Text>
       {/*<BackButton navigation={navigation} targetScreen="Start" />*/}
       <TextInput
         style={styles.input}
-        placeholder="First Name"
+        placeholder="Type First Name"
         value={firstName}
         onChangeText={(text) => setFirstName(text)}
       />
+      <Text style={styles.subtitles}>Last Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Last Name"
+        placeholder="Type Last Name"
         value={lastName}
         onChangeText={(text) => setLastName(text)}
       />
+      <Text style={styles.subtitles}>Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Enter Email Address"
         value={email}
         onChangeText={(text) => setEmail(text)}
         keyboardType="email-address"
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Create a Password"
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
+      <Text style={styles.subtitles}>Confirm Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Confirm Password"
+        placeholder="Confirm your typed Password"
         value={confirmPassword}
         onChangeText={(text) => setConfirmPassword(text)}
         secureTextEntry
       />
-      {/* displays error message when the pazzword and confirm password are diff */}
       {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
       <TouchableOpacity
         style={styles.button}
         onPress={handleSignUp}
       >
         <Text style={styles.buttonText}>Sign up</Text>
+      </TouchableOpacity>
+      <Text>Already have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('I_SignIn')}>
+        <Text style={styles.link}>Sign in</Text>
       </TouchableOpacity>
     </View>
   );
@@ -219,7 +231,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.background}>
       {/*<Button onPress={StartScreen}> <Text style={styles.buttonText}>Back</Text> </Button>*/}
       <TextInput
         style={styles.input}
@@ -301,16 +313,11 @@ const C_SignInScreen = () => {
 const I_HomeScreen = () => {
   return(
     <View style={styles.background}>
+      <Button>Volunteer</Button>
+      <Button>Donate</Button>
+      <Button>History</Button>
       <Text>Welcome back!</Text>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Volunteer</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Donate</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>History</Text>
-      </TouchableOpacity>
+      
       </View>
   );
 }
@@ -510,7 +517,6 @@ const DonateScreen = () => {
 }
 
 
-
 const App = () => {
   //create opportunity list in C_Home
   const [opportunities, setOpportunities] = useState([]);
@@ -541,10 +547,33 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     backgroundColor: '#4B9CD3',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  greyBackground: {
+    flex: 1,
+    alignItems: 'right',
+    justifyContent: 'flex-start',
+    margin: 50,
+  },
+  title:{
+    color: '#13294B',
+    fontSize: 30,
+    marginTop: 50,
+    marginBottom: 70,
+    alignItems: 'center',
+  },
+  subtitles: {
+    color: '#4B9CD3',
+    fontSize: 20,
+  },
+  link: {
+    color: '#4B9CD3',
+    fontSize: 15,
+    textDecorationLine: 'underline',
   },
   errorText: {
     color: 'red',
@@ -558,12 +587,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
   },
-  background: {
-    flex: 1,
-    backgroundColor: '#F8F8F8',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   appName: {
     color: '#FFFFFF',
     fontSize: 30,
@@ -574,23 +597,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#13294B',
     borderRadius: 5,
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginTop: 10,
+    paddingHorizontal: 30,
+    marginTop: 20,
+    marginBottom: 20,
+    alignItems: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '500',
   },
+
   backText: {
     color: '#FFFFFF',
     fontsize: 16,
     textDecorationLine: 'underline',
   },
   backButton: {
-    position: 'absolute',
-    top: 20,
-    left: 10,
+    color: '#4B9CD3',
+    fontSize: 15,
+    marginBottom: 20,
+    justifyContent: 'start',
   }
 });
 
