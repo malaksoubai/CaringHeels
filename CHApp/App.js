@@ -71,6 +71,11 @@ const I_SignInScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+          Back
+        </FontAwesome.Button>
+      </View>
       <Button
         onPress={StartScreen}
       >
@@ -241,6 +246,11 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
 
   return (
     <View style={styles.background}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+          Back
+        </FontAwesome.Button>
+      </View>
       {/*<Button onPress={StartScreen}> <Text style={styles.buttonText}>Back</Text> </Button>*/}
       <TextInput
         style={styles.input}
@@ -290,6 +300,11 @@ const C_SignInScreen = () => {
   }
   return (
     <View style={styles.background}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+          Back
+        </FontAwesome.Button>
+      </View>
       <Button onPress={StartScreen}>
         <Text style={styles.buttonText}>Back</Text>
       </Button>
@@ -620,12 +635,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 20,
     fontWeight: '500',
-  },
-
-  backText: {
-    color: '#FFFFFF',
-    fontsize: 16,
-    textDecorationLine: 'underline',
   },
   backButton: {
     color: '#4B9CD3',
