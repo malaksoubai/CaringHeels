@@ -2,6 +2,12 @@ import React, { useState } from 'react';  //State is used to store and manage da
 import { StyleSheet, TextInput, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { AntDesign } from '@expo/vector-icons'; 
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+
+
+
 // import I_SignInScreen from '../indiv_in';
 // import I_SignUpScreen from '../indiv_up';
 
@@ -121,9 +127,12 @@ const I_SignUpScreen = ({navigation}) => {
 
   return (
     <View style={styles.greyBackground}>
-      <TouchableOpacity onPress={() => navigation.navigate('Start')}>
-        <Text style={styles.backButton}>Back</Text>
-      </TouchableOpacity>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+          Back
+        </FontAwesome.Button>
+      </View>
+      
       <Text style={styles.title}>Individual Sign Up</Text>
       <Text style={styles.subtitles}>First Name</Text>
       {/*<BackButton navigation={navigation} targetScreen="Start" />*/}
@@ -560,8 +569,8 @@ const styles = StyleSheet.create({
   },
   greyBackground: {
     flex: 1,
-    alignItems: 'right',
-    justifyContent: 'flex-start',
+    // alignItems: 'right',
+    // justifyContent: 'flex-start',
     margin: 50,
   },
   title:{
@@ -621,7 +630,10 @@ const styles = StyleSheet.create({
   backButton: {
     color: '#4B9CD3',
     fontSize: 15,
-    marginBottom: 20,
+    backgroundColor: '#4B9CD3',
+  },
+  containerBack: {
+    width: '30%',
   }
 });
 
