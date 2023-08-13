@@ -312,12 +312,17 @@ const C_SignInScreen = () => {
 
 const I_HomeScreen = () => {
   return(
-    <View style={styles.background}>
-      <Button>Volunteer</Button>
-      <Button>Donate</Button>
-      <Button>History</Button>
+    <View style={styles.greyBackground}>
       <Text>Welcome back!</Text>
-      
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Volunteer</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Donate</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>History</Text>
+      </TouchableOpacity>
       </View>
   );
 }
@@ -617,7 +622,6 @@ const styles = StyleSheet.create({
     color: '#4B9CD3',
     fontSize: 15,
     marginBottom: 20,
-    justifyContent: 'start',
   }
 });
 
