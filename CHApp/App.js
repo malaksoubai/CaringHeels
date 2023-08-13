@@ -65,11 +65,11 @@ const I_SignInScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Button
+      <TouchableOpacity
         onPress={StartScreen}
       >
         <Text style={styles.buttonText}>Back</Text>
-      </Button>
+      </TouchableOpacity>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -155,6 +155,7 @@ const I_SignUpScreen = ({navigation}) => {
         onChangeText={(text) => setConfirmPassword(text)}
         secureTextEntry
       />
+      {/* displays error message when the pazzword and confirm password are diff */}
       {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
       <TouchableOpacity
         style={styles.button}
@@ -218,7 +219,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   }
 
   return (
-    <View style={styles.background}>
+    <View style={styles.container}>
       {/*<Button onPress={StartScreen}> <Text style={styles.buttonText}>Back</Text> </Button>*/}
       <TextInput
         style={styles.input}
@@ -300,11 +301,16 @@ const C_SignInScreen = () => {
 const I_HomeScreen = () => {
   return(
     <View style={styles.background}>
-      <Button>Volunteer</Button>
-      <Button>Donate</Button>
-      <Button>History</Button>
       <Text>Welcome back!</Text>
-      
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Volunteer</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Donate</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>History</Text>
+      </TouchableOpacity>
       </View>
   );
 }
@@ -502,6 +508,7 @@ const DonateScreen = () => {
     </View>
   )
 }
+
 
 
 const App = () => {
