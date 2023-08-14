@@ -134,7 +134,7 @@ const I_SignUpScreen = ({navigation}) => {
   );
 };
 
-const I_SignUpScreen2 = ({navigation, route}) => {
+const I_SignUpScreen2 = ({navigation, route}) => { 
   // const {firstName} = route.params;
 
   const uncStudentOptions = ['Yes', 'No'];
@@ -149,7 +149,6 @@ const I_SignUpScreen2 = ({navigation, route}) => {
   };
   const [selectedVorDOptionsOption, setSelectedVorDOptionsOption] = useState(null);
 
-  // const passionOptions = ['Yes', 'No'];
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -187,9 +186,8 @@ const I_SignUpScreen2 = ({navigation, route}) => {
 
 
   const handleDone = () => {
-    console.log('UNC student?:', selectedUncStudentOption);
+    console.log('UNC student?:', setSelectedUncStudentOption);
     console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
-    // console.log('Passions:', selectedPassionOption);
     navigation.navigate('I_Home');
   };
 
@@ -299,7 +297,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleC_SignUp = () => {
-    if (password !== confirmPassword) {
+    if (cPassword !== cConfirmPassword) {
       // Display an error message or handle the mismatch
       setErrorMessage("Passwords don't match"); 
       return;
@@ -310,12 +308,12 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
     console.log('Password:', cPassword);
     console.log('Confirm Password:', cConfirmPassword);
     setErrorMessage(''); // Clear the error message
-    navigation.navigate('C_Home'); // Should this be here and in and in handleSignUp?
+    // navigation.navigate('C_SignUp2'); // Should this be here and in and in handleSignUp?
   }
 
   const handleSignUp = () => {
     handleC_SignUp();
-    navigation.navigate('C_Home');
+    navigation.navigate('C_SignUp2');
   }
 
   return (
@@ -372,82 +370,83 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
 };
 
 const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
-  const [clubName, setClubName] = useState('');
-  const [clubEmail, setClubEmail] = useState('');
-  const [cPassword, setCPassword] = useState('');
-  const [cConfirmPassword, setCConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('')
+  const uncAffiliatedOptions = ['Yes', 'No'];
+  const handleSelectUncAffiliatedOption = (option) => {
+    setSelectedUncAffiliatedOption(option);
+  };
+  const [selectedUncAffiliatedOption, setSelectedUncAffiliatedOption] = useState(null);
 
-  const handleC_SignUp = () => {
-    if (password !== confirmPassword) {
-      // Display an error message or handle the mismatch
-      setErrorMessage("Passwords don't match"); 
-      return;
-    }
+  const VorDOptions = ['Volunteer', 'Donate', 'Both'];
+  const handleSelectVorDOptionsOption = (option) => {
+    setSelectedVorDOptionsOption(option);
+  };
+  const [selectedVorDOptionsOption, setSelectedVorDOptionsOption] = useState(null);
 
-    console.log('Club Name:', clubName);
-    console.log('Club Email:', clubEmail);
-    console.log('Password:', cPassword);
-    console.log('Confirm Password:', cConfirmPassword);
-    setErrorMessage(''); // Clear the error message
-    navigation.navigate('C_Home'); // Should this be here and in and in handleSignUp?
-  }
+  const [clubLink, setClubLink] = useState('');
+  const [clubDescription, setClubDescription] = useState('');
 
-  const handleSignUp = () => {
-    handleC_SignUp();
-    navigation.navigate('C_Home');
-  }
+
+  const handleDone = () => {
+    console.log('UNC affiliated?:', setSelectedUncAffiliatedOption);
+    console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
+    console.log('clubLink:', setClubLink);
+    console.log('clubDescription:', setClubDescription);
+    navigation.navigate('I_Home');
+  };
 
   return (
-    <View style={styles.greyBackground}>
+    <ScrollView style={styles.greyBackground}>
       <View style={styles.containerBack}>
-        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_SignUp')}>
           Back
         </FontAwesome.Button>
       </View>
-      <Text style={styles.title}>Club Sign Up</Text>
-      <Text style={styles.subtitles}>Club Name</Text>
+      
+      <Text style={styles.title}>Hi, </Text>
+      <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
+      <Text style={styles.subtitles}>Are you a UNC affiliated Club or Organization?</Text>
+      <RadioButton.Group onValueChange={handleSelectUncAffiliatedOption} value={selectedUncAffiliatedOption}>
+        {uncAffiliatedOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+
+      <Text style={styles.subtitles}>Are you interested in posting Volunteering or Donation opportunities?</Text>
+      <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
+        {VorDOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+      <Text style={styles.subtitles}>Provide a link to the Club's website</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter Club Name"
-        value={clubName}
-        onChangeText={(text) => setClubName(text)}
+        placeholder="Paste URL here"
+        value={clubLink}
+        onChangeText={(text) => setClubLink(text)}
+        keyboardType="club-link"
       />
-      <Text style={styles.subtitles}>Club Email</Text>
-      <TextInput
+      <Text style={styles.subtitles}>Provide a brief description of the club</Text>
+      <TextboxInput
         style={styles.input}
-        placeholder="Enter Club Email address"
-        value={clubEmail}
-        onChangeText={(text) => setClubEmail(text)}
-       keyboardType="email-address"
+        placeholder="Please specify your mission"
+        value={clubDescription}
+        onChangeText={(text) => setClubDescription(text)}
+        keyboardType="club-description"
       />
-      <Text style={styles.subtitles}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Create a Password"
-        value={cPassword}
-        onChangeText={(text) => setCPassword(text)}
-      />
-      <Text style={styles.subtitles}>Confirm Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm your typed Password"
-        value={cConfirmPassword}
-        onChangeText={(text) => setCConfirmPassword(text)}
-        secureTextEntry
-      />
-      {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+     
       <TouchableOpacity
         style={styles.button}
-        onPress={handleSignUp}  
+        onPress={handleDone}
       >
-        <Text style={styles.buttonText}>Sign up</Text>
+        <Text style={styles.buttonText}>Done</Text>
       </TouchableOpacity>
-      <Text>Already have an account?</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('C_SignIn')}>
-        <Text style={styles.link}>Sign in</Text>
-      </TouchableOpacity>
-  </View>
+    </ScrollView>
   );
 };
 
@@ -514,23 +513,23 @@ const I_HomeScreen = () => {
 }
 
 const C_HomeScreen = ({route}) => {
-  const {clubName} = route.params;
-  return(
-    <View style={styles.background}>
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-        <Text>Profile</Text>
-      </TouchableOpacity>
-      <Text>Welcome back, {clubName}!</Text> {/*call the club Name from C_SignUpScreen OR C_SignInScreen*/}
-      <Text>Opportunities</Text>
-      {/*I want the opportunities once posted, to be viewed here with the ability to be deleted*/}
-      <TouchableOpacity onPress={() => navigation.navigate('C_Volunteer')}>
-        <Text>Create Volunteering Opportunity</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('C_Donate')}>
-        <Text>Donate</Text>
-      </TouchableOpacity>
-      </View>
-  );
+ // const {clubName} = route.params;
+  // return(
+  //   <View style={styles.background}>
+  //     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+  //       <Text>Profile</Text>
+  //     </TouchableOpacity>
+  //     <Text>Welcome back, {clubName}!</Text> {/*call the club Name from C_SignUpScreen OR C_SignInScreen*/}
+  //     <Text>Opportunities</Text>
+  //     {/*I want the opportunities once posted, to be viewed here with the ability to be deleted*/}
+  //     <TouchableOpacity onPress={() => navigation.navigate('C_Volunteer')}>
+  //       <Text>Create Volunteering Opportunity</Text>
+  //     </TouchableOpacity>
+  //     <TouchableOpacity onPress={() => navigation.navigate('C_Donate')}>
+  //       <Text>Donate</Text>
+  //     </TouchableOpacity>
+  //     </View>
+  // );
 }
 
 const ProfileScreen = () => {
