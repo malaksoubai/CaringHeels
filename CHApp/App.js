@@ -310,6 +310,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
     console.log('Password:', cPassword);
     console.log('Confirm Password:', cConfirmPassword);
     setErrorMessage(''); // Clear the error message
+    navigation.navigate('C_Home', { clubName });
     // navigation.navigate('C_SignUp2'); // Should this be here and in and in handleSignUp?
   }
 
@@ -439,7 +440,7 @@ const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
         placeholder="Please specify your mission"
         value={clubDescription}
         onChangeText={(text) => setClubDescription(text)}
-        keyboardType="club-description"
+        keyboardType="default"
       />
      
       <TouchableOpacity
@@ -517,12 +518,13 @@ const I_HomeScreen = () => {
 }
 
 const C_HomeScreen = ({navigation, route}) => {
+  const { clubName } = route.params || {}; // Get the clubName from route.params
   return(
     <View style={styles.greyBackground}>
       <View style={styles.profileIcon}>
       <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
       </View>
-      <Text style={styles.user}>Welcome</Text>
+      <Text style={styles.user}>Welcome, {clubName || "Guest"}</Text>
      <TouchableOpacity style={styles.createBotton} onPress={() => navigation.navigate('Create')}>
         <Text>Create a new Opportunity</Text>
         <Entypo name="circle-with-plus" size={24} color="#13294B" />      
@@ -824,8 +826,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 40,
     textAlign: 'center',
-    borderBottomWidth: 1, // Add border width for the horizontal line
-    borderBottomColor: '#13294B', // Choose the color you want for the line
   },
 
 });
