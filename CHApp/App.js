@@ -429,7 +429,7 @@ const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
         placeholder="Paste URL here"
         value={clubLink}
         onChangeText={(text) => setClubLink(text)}
-        keyboardType="club-link"
+        keyboardType="url"
       />
       <Text style={styles.subtitles}>Provide a brief description of the club</Text>
       <TextInput
@@ -457,6 +457,8 @@ const C_SignInScreen = ({navigation}) => {
   const handleC_SignIn = () => {
     console.log('Club Email:', clubEmail);
     console.log('Password:', cPassword);
+    navigation.navigate('C_Home');
+
 
   }
   return (
@@ -512,7 +514,17 @@ const I_HomeScreen = () => {
   );
 }
 
-const C_HomeScreen = ({route}) => {
+const C_HomeScreen = ({navigation, route}) => {
+  return(
+    <ScrollView style={styles.greyBackground}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Create')}>
+          Back
+        </FontAwesome.Button>
+      </View>
+      <Text style={styles.title}>Past Opportunities</Text>
+    </ScrollView>
+  );
  // const {clubName} = route.params;
   // return(
   //   <View style={styles.background}>
@@ -604,7 +616,7 @@ const ProfileScreen = () => {
   )
 }
 
-const VolunteerScreen = ({route}) => {
+const CreateOppScreen = ({route}) => {
   const {clubName} = route.params;
   const [oppName, setOppName] = useState('');
   const [oppDate, setOppDate] = useState('');
@@ -684,28 +696,6 @@ const VolunteerScreen = ({route}) => {
   )
 }
 
-const DonateScreen = () => {
-  const {clubName} = route.params;
-  const [oppName, setOppName] = useState('');
-  const [oppDate, setOppDate] = useState('');
-  const [donCategories, setDonCategories] = useState(''); //Donation Categories: monetary, clothing, in-kind (time, supplies, etc.)
-  const [oppGoal, setOppGoal] = useState('');
-  const [oppDescription, setOppDescription] = useState('');
-
-  const handleVolOpp = () => {
-    console.log('Opp. Title:', oppName);
-    console.log('Opp. Date:', oppDate);
-    console.log('Opp. Time:', oppTime);
-    console.log('Opp. Goal:', oppGoal);
-    console.log('Opp. Description:', oppDescription);
-  }
-  return(
-    <View>
-      
-    </View>
-  )
-}
-
 const App = () => {
   //create opportunity list in C_Home
   const [opportunities, setOpportunities] = useState([]);
@@ -719,17 +709,11 @@ const App = () => {
         <Stack.Screen name="C_SignUp" component={C_SignUpScreen} />
         <Stack.Screen name="C_SignUp2" component={C_SignUpScreen2} />
         <Stack.Screen name="C_SignIn" component={C_SignInScreen} />
-        <Stack.Screen 
-          name="I_Home" 
-          component={I_HomeScreen} 
-        />
-        <Stack.Screen 
-          name="C_Home" 
-          component={C_HomeScreen} 
+        <Stack.Screen name="I_Home" component={I_HomeScreen} />
+        <Stack.Screen name="C_Home" component={C_HomeScreen} 
           //initialParams={{clubName,opportunities}}
         />
-        <Stack.Screen name="C_Volunteer" component={VolunteerScreen} />
-        <Stack.Screen name="C_Donate" component={DonateScreen} />
+        <Stack.Screen name="Create" component={CreateOppScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
