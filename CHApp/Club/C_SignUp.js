@@ -113,10 +113,10 @@ export const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
   
   
     const handleDone = () => {
-      console.log('UNC affiliated?:', setSelectedUncAffiliatedOption);
-      console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
-      console.log('clubLink:', setClubLink);
-      console.log('clubDescription:', setClubDescription);
+      console.log('UNC affiliated?:', selectedUncAffiliatedOption);
+      console.log('volunteerOrDonate:', selectedVorDOptionsOption);
+      console.log('clubLink:', clubLink);
+      console.log('clubDescription:', clubDescription);
       navigation.navigate('C_Home');
     };
   
@@ -159,7 +159,9 @@ export const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
         />
         <Text style={styles.subtitles}>Provide a brief description of the club</Text>
         <TextInput
-          style={styles.input}
+          multiline={true}
+          numberOfLines={10}
+          style={styles.box}
           placeholder="Please specify your mission"
           value={clubDescription}
           onChangeText={(text) => setClubDescription(text)}

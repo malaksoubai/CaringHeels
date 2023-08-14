@@ -22,6 +22,8 @@ import CreateOppScreen from './Club/C_Create.js';
 //Import of CSS:
 import styles from './Style.js';
 
+//keyboardType="email-address"
+
 
 const Stack = createNativeStackNavigator();
 

@@ -146,8 +146,8 @@ export const I_SignUpScreen2 = ({navigation, route}) => {
   
   
     const handleDone = () => {
-      console.log('UNC student?:', setSelectedUncStudentOption);
-      console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
+      console.log('UNC student?:', selectedUncStudentOption);
+      console.log('volunteerOrDonate:', selectedVorDOptionsOption);
       navigation.navigate('I_Home');
     };
   
