@@ -2,34 +2,16 @@ import React, { useState } from 'react';  //State is used to store and manage da
 import { StyleSheet, TextInput, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { AntDesign } from '@expo/vector-icons'; 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-
-
-// import I_SignInScreen from '../indiv_in';
-// import I_SignUpScreen from '../indiv_up';
-
-
 const Stack = createNativeStackNavigator();
-
-/*const BackButton = ({ navigation, targetScreen, style }) => {
-  const handleBackPress = () => {
-    navigation.navigate(targetScreen); // Navigate to the specified target screen
-  };
-
-  return (
-    <TouchableOpacity style={[style.backButton, style]} onPress={handleBackPress}>
-      <Text style={styles.buttonText}>Back</Text>
-    </TouchableOpacity>
-  );};*/
 
 const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('./assets/CaringHeels.png')} />
       <Text style={styles.appName}>CaringHeels</Text>
+      <Text style={styles.homeSubtitles}>I am a student:</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('I_SignUp')}
@@ -42,6 +24,7 @@ const StartScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Sign in as an Individual</Text>
       </TouchableOpacity>
+      <Text style={styles.homeSubtitles}>I am a club or organization:</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('C_SignUp')}
@@ -70,27 +53,25 @@ const I_SignInScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.greyBackground}>
       <View style={styles.containerBack}>
         <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
           Back
         </FontAwesome.Button>
       </View>
-      <Button
-        onPress={StartScreen}
-      >
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
+      <Text style={styles.title}>Individual Sign In</Text>
+      <Text style={styles.subtitles}>Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Enter your email address"
         value={email}
         onChangeText={(text) => setEmail(text)}
         keyboardType="email-address"
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Enter your password"
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
@@ -100,6 +81,10 @@ const I_SignInScreen = ({navigation}) => {
         onPress={handleSignIn}
       >
         <Text style={styles.buttonText}>Sign in</Text>
+      </TouchableOpacity>
+      <Text>Don't have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('I_SignUp')}>
+        <Text style={styles.link}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -194,29 +179,6 @@ const I_SignUpScreen = ({navigation}) => {
 };
 
 
-// const I_SignUpScreen = () => {  // move this to a new page and connect them both
-//   return (
-//     <View style={styles.container}>
-//       <TouchableOpacity style={style.button} onPress={handleSignUp}>
-//         <Text style={style.buttonText}>Sign Up for Individuals</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// const I_SignInScreen = () => {
-//   return (
-//     <View style={styles.background}>
-//       <Text>Sign In Page for Individuals</Text>
-//     <div class="back-arrow">
-//     <a href="javascript:history.back()" class="arrow-link">
-//       <img src="white-arrow.png" alt="Back Arrow"/>
-//     </a>
-//     </div>
-//     </View>
-//   );
-// };
-
 const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   const [clubName, setClubName] = useState('');
   const [clubEmail, setClubEmail] = useState('');
@@ -245,35 +207,39 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   }
 
   return (
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       <View style={styles.containerBack}>
         <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
           Back
         </FontAwesome.Button>
       </View>
-      {/*<Button onPress={StartScreen}> <Text style={styles.buttonText}>Back</Text> </Button>*/}
+      <Text style={styles.title}>Club Sign Up</Text>
+      <Text style={styles.subtitles}>Club Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Name"
+        placeholder="Enter Club Name"
         value={clubName}
         onChangeText={(text) => setClubName(text)}
       />
+      <Text style={styles.subtitles}>Club Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Email"
+        placeholder="Enter Club Email address"
         value={clubEmail}
         onChangeText={(text) => setClubEmail(text)}
        keyboardType="email-address"
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Create a Password"
         value={cPassword}
         onChangeText={(text) => setCPassword(text)}
       />
+      <Text style={styles.subtitles}>Confirm Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Confirm Password"
+        placeholder="Confirm your typed Password"
         value={cConfirmPassword}
         onChangeText={(text) => setCConfirmPassword(text)}
         secureTextEntry
@@ -285,39 +251,39 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
       >
         <Text style={styles.buttonText}>Sign up</Text>
       </TouchableOpacity>
+      <Text>Already have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('C_SignIn')}>
+        <Text style={styles.link}>Sign in</Text>
+      </TouchableOpacity>
   </View>
   );
 };
 
-const C_SignInScreen = () => {
-  const [clubName, setClubName] = useState('');
+const C_SignInScreen = ({navigation}) => {
+  const [clubEmail, setClubEmail] = useState('');
   const [cPassword, setCPassword] = useState('');
 
   const handleC_SignIn = () => {
-    console.log('Club Name:', clubName);
+    console.log('Club Email:', clubEmail);
     console.log('Password:', cPassword);
 
   }
   return (
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       <View style={styles.containerBack}>
         <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
           Back
         </FontAwesome.Button>
       </View>
-      <Button onPress={StartScreen}>
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
-      <Text>Sign in as a club</Text>
-      <Button onPress={StartScreen}>
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
+      <Text style={styles.title}>Club Sign In</Text>
+      <Text style={styles.subtitles}>Club Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Name"
-        value={clubName}
-        onChangeText={(text) => setClubName(text)}
+        placeholder="Type Club Email address"
+        value={clubEmail}
+        onChangeText={(text) => setClubEmail(text)}
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -329,6 +295,10 @@ const C_SignInScreen = () => {
         onPress={handleC_SignIn}
       >
         <Text style={styles.buttonText}>Sign up</Text>
+      </TouchableOpacity>
+      <Text>Don't have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('C_SignUp')}>
+        <Text style={styles.link}>Sign Up</Text>
       </TouchableOpacity>
   </View>
   );
@@ -598,6 +568,10 @@ const styles = StyleSheet.create({
   subtitles: {
     color: '#4B9CD3',
     fontSize: 20,
+  },
+  homeSubtitles: {
+    color: 'white',
+    fontSize: 15,
   },
   link: {
     color: '#4B9CD3',
