@@ -1,35 +1,22 @@
 import React, { useState } from 'react';  //State is used to store and manage data within a component.
-import { StyleSheet, TextInput, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, Text, View, Image, TouchableOpacity,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+// import CheckBox from '@react-native-community/checkbox';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { AntDesign } from '@expo/vector-icons'; 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-
-
-
-// import I_SignInScreen from '../indiv_in';
-// import I_SignUpScreen from '../indiv_up';
+import { RadioButton } from 'react-native-paper';
+import Checkbox from './Checkbox.js';
+// import Checkbox from 'expo-checkbox';
 
 
 const Stack = createNativeStackNavigator();
-
-/*const BackButton = ({ navigation, targetScreen, style }) => {
-  const handleBackPress = () => {
-    navigation.navigate(targetScreen); // Navigate to the specified target screen
-  };
-
-  return (
-    <TouchableOpacity style={[style.backButton, style]} onPress={handleBackPress}>
-      <Text style={styles.buttonText}>Back</Text>
-    </TouchableOpacity>
-  );};*/
 
 const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('./assets/CaringHeels.png')} />
       <Text style={styles.appName}>CaringHeels</Text>
+      <Text style={styles.homeSubtitles}>I am a student:</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('I_SignUp')}
@@ -42,6 +29,7 @@ const StartScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Sign in as an Individual</Text>
       </TouchableOpacity>
+      <Text style={styles.homeSubtitles}>I am a club or organization:</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('C_SignUp')}
@@ -53,53 +41,6 @@ const StartScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('C_SignIn')}
       >
         <Text style={styles.buttonText}>Sign in as a Club</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const I_SignInScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSignIn = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    navigation.navigate('I_Home');
-
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.containerBack}>
-        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
-          Back
-        </FontAwesome.Button>
-      </View>
-      <Button
-        onPress={StartScreen}
-      >
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSignIn}
-      >
-        <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
     </View>
   );
@@ -127,7 +68,7 @@ const I_SignUpScreen = ({navigation}) => {
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
     setErrorMessage(''); // Clear the error message
-    navigation.navigate('I_Home');
+    navigation.navigate('I_SignUp2');
   };
 
   return (
@@ -193,29 +134,160 @@ const I_SignUpScreen = ({navigation}) => {
   );
 };
 
+const I_SignUpScreen2 = ({navigation, route}) => { 
+  // const {firstName} = route.params;
 
-// const I_SignUpScreen = () => {  // move this to a new page and connect them both
-//   return (
-//     <View style={styles.container}>
-//       <TouchableOpacity style={style.button} onPress={handleSignUp}>
-//         <Text style={style.buttonText}>Sign Up for Individuals</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
+  const uncStudentOptions = ['Yes', 'No'];
+  const handleSelectUncStudentOption = (option) => {
+    setSelectedUncStudentOption(option);
+  };
+  const [selectedUncStudentOption, setSelectedUncStudentOption] = useState(null);
 
-// const I_SignInScreen = () => {
-//   return (
-//     <View style={styles.background}>
-//       <Text>Sign In Page for Individuals</Text>
-//     <div class="back-arrow">
-//     <a href="javascript:history.back()" class="arrow-link">
-//       <img src="white-arrow.png" alt="Back Arrow"/>
-//     </a>
-//     </div>
-//     </View>
-//   );
-// };
+  const VorDOptions = ['Volunteer', 'Donate', 'Both'];
+  const handleSelectVorDOptionsOption = (option) => {
+    setSelectedVorDOptionsOption(option);
+  };
+  const [selectedVorDOptionsOption, setSelectedVorDOptionsOption] = useState(null);
+
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [isChecked6, setIsChecked6] = useState(false);
+  const [isChecked7, setIsChecked7] = useState(false);
+  const [isChecked8, setIsChecked8] = useState(false);
+
+  
+  const handleToggleCheckbox1 = () => {
+    setIsChecked1(!isChecked1);
+  };
+  const handleToggleCheckbox2 = () => {
+    setIsChecked2(!isChecked2);
+  };
+  const handleToggleCheckbox3 = () => {
+    setIsChecked3(!isChecked3);
+  };
+  const handleToggleCheckbox4 = () => {
+    setIsChecked4(!isChecked4);
+  };
+  const handleToggleCheckbox5 = () => {
+    setIsChecked5(!isChecked5);
+  };
+  const handleToggleCheckbox6 = () => {
+    setIsChecked6(!isChecked6);
+  };
+  const handleToggleCheckbox7 = () => {
+    setIsChecked7(!isChecked7);
+  };
+  const handleToggleCheckbox8 = () => {
+    setIsChecked8(!isChecked8);
+  };
+
+
+  const handleDone = () => {
+    console.log('UNC student?:', setSelectedUncStudentOption);
+    console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
+    navigation.navigate('I_Home');
+  };
+
+  return (
+    <ScrollView style={styles.greyBackground}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('I_SignUp')}>
+          Back
+        </FontAwesome.Button>
+      </View>
+      
+      <Text style={styles.title}>Hi, </Text>
+      <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
+      <Text style={styles.subtitles}>Are you a UNC student?</Text>
+      <RadioButton.Group onValueChange={handleSelectUncStudentOption} value={selectedUncStudentOption}>
+        {uncStudentOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+
+      <Text style={styles.subtitles}>Are you interested in Volunteering or Donating?</Text>
+      <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
+        {VorDOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+      <Text style={styles.subtitles}>What are you passionate about?</Text>
+      <Checkbox label="Children" value={isChecked1} onValueChange={handleToggleCheckbox1} />
+      <Checkbox label="Community" value={isChecked2} onValueChange={handleToggleCheckbox2} />
+      <Checkbox label="Disaster Relief" value={isChecked3} onValueChange={handleToggleCheckbox3} />
+      <Checkbox label="Education" value={isChecked4} onValueChange={handleToggleCheckbox4} />
+      <Checkbox label="Environment" value={isChecked5} onValueChange={handleToggleCheckbox5} />
+      <Checkbox label="Healthcare" value={isChecked6} onValueChange={handleToggleCheckbox6} />
+      <Checkbox label="Human Rights" value={isChecked7} onValueChange={handleToggleCheckbox7} />
+      <Checkbox label="Seniors" value={isChecked8} onValueChange={handleToggleCheckbox8} />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleDone}
+      >
+        <Text style={styles.buttonText}>Done</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+};
+
+const I_SignInScreen = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = () => {
+    console.log('Email:', email);
+    console.log('Password:', password);
+    navigation.navigate('I_Home');
+
+  };
+
+  return (
+    <View style={styles.greyBackground}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+          Back
+        </FontAwesome.Button>
+      </View>
+      <Text style={styles.title}>Individual Sign In</Text>
+      <Text style={styles.subtitles}>Email</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your email address"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+        keyboardType="email-address"
+      />
+      <Text style={styles.subtitles}>Password</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your password"
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+        secureTextEntry
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleSignIn}
+      >
+        <Text style={styles.buttonText}>Sign in</Text>
+      </TouchableOpacity>
+      <Text>Don't have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('I_SignUp')}>
+        <Text style={styles.link}>Sign Up</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   const [clubName, setClubName] = useState('');
@@ -225,7 +297,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleC_SignUp = () => {
-    if (password !== confirmPassword) {
+    if (cPassword !== cConfirmPassword) {
       // Display an error message or handle the mismatch
       setErrorMessage("Passwords don't match"); 
       return;
@@ -236,44 +308,48 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
     console.log('Password:', cPassword);
     console.log('Confirm Password:', cConfirmPassword);
     setErrorMessage(''); // Clear the error message
-    navigation.navigate('C_Home'); // Should this be here and in and in handleSignUp?
+    // navigation.navigate('C_SignUp2'); // Should this be here and in and in handleSignUp?
   }
 
   const handleSignUp = () => {
     handleC_SignUp();
-    navigation.navigate('C_Home');
+    navigation.navigate('C_SignUp2');
   }
 
   return (
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       <View style={styles.containerBack}>
         <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
           Back
         </FontAwesome.Button>
       </View>
-      {/*<Button onPress={StartScreen}> <Text style={styles.buttonText}>Back</Text> </Button>*/}
+      <Text style={styles.title}>Club Sign Up</Text>
+      <Text style={styles.subtitles}>Club Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Name"
+        placeholder="Enter Club Name"
         value={clubName}
         onChangeText={(text) => setClubName(text)}
       />
+      <Text style={styles.subtitles}>Club Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Email"
+        placeholder="Enter Club Email address"
         value={clubEmail}
         onChangeText={(text) => setClubEmail(text)}
        keyboardType="email-address"
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Create a Password"
         value={cPassword}
         onChangeText={(text) => setCPassword(text)}
       />
+      <Text style={styles.subtitles}>Confirm Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Confirm Password"
+        placeholder="Confirm your typed Password"
         value={cConfirmPassword}
         onChangeText={(text) => setCConfirmPassword(text)}
         secureTextEntry
@@ -285,39 +361,120 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
       >
         <Text style={styles.buttonText}>Sign up</Text>
       </TouchableOpacity>
+      <Text>Already have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('C_SignIn')}>
+        <Text style={styles.link}>Sign in</Text>
+      </TouchableOpacity>
   </View>
   );
 };
 
-const C_SignInScreen = () => {
-  const [clubName, setClubName] = useState('');
+const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
+  const uncAffiliatedOptions = ['Yes', 'No'];
+  const handleSelectUncAffiliatedOption = (option) => {
+    setSelectedUncAffiliatedOption(option);
+  };
+  const [selectedUncAffiliatedOption, setSelectedUncAffiliatedOption] = useState(null);
+
+  const VorDOptions = ['Volunteer', 'Donate', 'Both'];
+  const handleSelectVorDOptionsOption = (option) => {
+    setSelectedVorDOptionsOption(option);
+  };
+  const [selectedVorDOptionsOption, setSelectedVorDOptionsOption] = useState(null);
+
+  const [clubLink, setClubLink] = useState('');
+  const [clubDescription, setClubDescription] = useState('');
+
+
+  const handleDone = () => {
+    console.log('UNC affiliated?:', setSelectedUncAffiliatedOption);
+    console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
+    console.log('clubLink:', setClubLink);
+    console.log('clubDescription:', setClubDescription);
+    navigation.navigate('I_Home');
+  };
+
+  return (
+    <ScrollView style={styles.greyBackground}>
+      <View style={styles.containerBack}>
+        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_SignUp')}>
+          Back
+        </FontAwesome.Button>
+      </View>
+      
+      <Text style={styles.title}>Hi, </Text>
+      <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
+      <Text style={styles.subtitles}>Are you a UNC affiliated Club or Organization?</Text>
+      <RadioButton.Group onValueChange={handleSelectUncAffiliatedOption} value={selectedUncAffiliatedOption}>
+        {uncAffiliatedOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+
+      <Text style={styles.subtitles}>Are you interested in posting Volunteering or Donation opportunities?</Text>
+      <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
+        {VorDOptions.map((option) => (
+          <View key={option} style={styles.radioButton}>
+            <RadioButton value={option} />
+            <Text>{option}</Text>
+          </View>
+        ))}
+      </RadioButton.Group>
+      <Text style={styles.subtitles}>Provide a link to the Club's website</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Paste URL here"
+        value={clubLink}
+        onChangeText={(text) => setClubLink(text)}
+        keyboardType="club-link"
+      />
+      <Text style={styles.subtitles}>Provide a brief description of the club</Text>
+      <TextboxInput
+        style={styles.input}
+        placeholder="Please specify your mission"
+        value={clubDescription}
+        onChangeText={(text) => setClubDescription(text)}
+        keyboardType="club-description"
+      />
+     
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleDone}
+      >
+        <Text style={styles.buttonText}>Done</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+};
+
+const C_SignInScreen = ({navigation}) => {
+  const [clubEmail, setClubEmail] = useState('');
   const [cPassword, setCPassword] = useState('');
 
   const handleC_SignIn = () => {
-    console.log('Club Name:', clubName);
+    console.log('Club Email:', clubEmail);
     console.log('Password:', cPassword);
 
   }
   return (
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       <View style={styles.containerBack}>
         <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
           Back
         </FontAwesome.Button>
       </View>
-      <Button onPress={StartScreen}>
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
-      <Text>Sign in as a club</Text>
-      <Button onPress={StartScreen}>
-        <Text style={styles.buttonText}>Back</Text>
-      </Button>
+      <Text style={styles.title}>Club Sign In</Text>
+      <Text style={styles.subtitles}>Club Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Name"
-        value={clubName}
-        onChangeText={(text) => setClubName(text)}
+        placeholder="Type Club Email address"
+        value={clubEmail}
+        onChangeText={(text) => setClubEmail(text)}
       />
+      <Text style={styles.subtitles}>Password</Text>
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -329,6 +486,10 @@ const C_SignInScreen = () => {
         onPress={handleC_SignIn}
       >
         <Text style={styles.buttonText}>Sign up</Text>
+      </TouchableOpacity>
+      <Text>Don't have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('C_SignUp')}>
+        <Text style={styles.link}>Sign Up</Text>
       </TouchableOpacity>
   </View>
   );
@@ -352,23 +513,23 @@ const I_HomeScreen = () => {
 }
 
 const C_HomeScreen = ({route}) => {
-  const {clubName} = route.params;
-  return(
-    <View style={styles.background}>
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-        <Text>Profile</Text>
-      </TouchableOpacity>
-      <Text>Welcome back, {clubName}!</Text> {/*call the club Name from C_SignUpScreen OR C_SignInScreen*/}
-      <Text>Opportunities</Text>
-      {/*I want the opportunities once posted, to be viewed here with the ability to be deleted*/}
-      <TouchableOpacity onPress={() => navigation.navigate('C_Volunteer')}>
-        <Text>Create Volunteering Opportunity</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('C_Donate')}>
-        <Text>Donate</Text>
-      </TouchableOpacity>
-      </View>
-  );
+ // const {clubName} = route.params;
+  // return(
+  //   <View style={styles.background}>
+  //     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+  //       <Text>Profile</Text>
+  //     </TouchableOpacity>
+  //     <Text>Welcome back, {clubName}!</Text> {/*call the club Name from C_SignUpScreen OR C_SignInScreen*/}
+  //     <Text>Opportunities</Text>
+  //     {/*I want the opportunities once posted, to be viewed here with the ability to be deleted*/}
+  //     <TouchableOpacity onPress={() => navigation.navigate('C_Volunteer')}>
+  //       <Text>Create Volunteering Opportunity</Text>
+  //     </TouchableOpacity>
+  //     <TouchableOpacity onPress={() => navigation.navigate('C_Donate')}>
+  //       <Text>Donate</Text>
+  //     </TouchableOpacity>
+  //     </View>
+  // );
 }
 
 const ProfileScreen = () => {
@@ -545,7 +706,6 @@ const DonateScreen = () => {
   )
 }
 
-
 const App = () => {
   //create opportunity list in C_Home
   const [opportunities, setOpportunities] = useState([]);
@@ -554,8 +714,10 @@ const App = () => {
       <Stack.Navigator screenOptions={{headerShown: false}} >
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="I_SignUp" component={I_SignUpScreen} />
+        <Stack.Screen name="I_SignUp2" component={I_SignUpScreen2} />
         <Stack.Screen name="I_SignIn" component={I_SignInScreen} />
         <Stack.Screen name="C_SignUp" component={C_SignUpScreen} />
+        <Stack.Screen name="C_SignUp2" component={C_SignUpScreen2} />
         <Stack.Screen name="C_SignIn" component={C_SignInScreen} />
         <Stack.Screen 
           name="I_Home" 
@@ -598,6 +760,10 @@ const styles = StyleSheet.create({
   subtitles: {
     color: '#4B9CD3',
     fontSize: 20,
+  },
+  homeSubtitles: {
+    color: 'white',
+    fontSize: 15,
   },
   link: {
     color: '#4B9CD3',
@@ -643,6 +809,13 @@ const styles = StyleSheet.create({
   },
   containerBack: {
     width: '30%',
+  }, 
+  radioButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  signup2Text: {
+    marginBottom: 20,
   }
 });
 
