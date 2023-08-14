@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { RadioButton } from 'react-native-paper';
 import Checkbox from './Checkbox.js';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Entypo } from '@expo/vector-icons';
 // import Checkbox from 'expo-checkbox';
 
 
@@ -308,6 +310,7 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
     console.log('Password:', cPassword);
     console.log('Confirm Password:', cConfirmPassword);
     setErrorMessage(''); // Clear the error message
+    navigation.navigate('C_Home', { clubName });
     // navigation.navigate('C_SignUp2'); // Should this be here and in and in handleSignUp?
   }
 
@@ -437,7 +440,7 @@ const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
         placeholder="Please specify your mission"
         value={clubDescription}
         onChangeText={(text) => setClubDescription(text)}
-        keyboardType="club-description"
+        keyboardType="default"
       />
      
       <TouchableOpacity
@@ -515,15 +518,20 @@ const I_HomeScreen = () => {
 }
 
 const C_HomeScreen = ({navigation, route}) => {
+  const { clubName } = route.params || {}; // Get the clubName from route.params
   return(
-    <ScrollView style={styles.greyBackground}>
-      <View style={styles.containerBack}>
-        <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Create')}>
-          Back
-        </FontAwesome.Button>
+    <View style={styles.greyBackground}>
+      <View style={styles.profileIcon}>
+      <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
       </View>
+      <Text style={styles.user}>Welcome, {clubName || "Guest"}</Text>
+     <TouchableOpacity style={styles.createBotton} onPress={() => navigation.navigate('Create')}>
+        <Text>Create a new Opportunity</Text>
+        <Entypo name="circle-with-plus" size={24} color="#13294B" />      
+      </TouchableOpacity>
       <Text style={styles.title}>Past Opportunities</Text>
-    </ScrollView>
+      <ScrollView></ScrollView>
+    </View>
   );
  // const {clubName} = route.params;
   // return(
@@ -564,7 +572,7 @@ const ProfileScreen = () => {
     navigation.navigate('C_Volunteer', {clubName});
   }
   return(
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       {/*<Button onPress={C_HomeScreen}>
         <Text style={styles.buttonText}>Back</Text>
   </Button>*/}
@@ -617,7 +625,7 @@ const ProfileScreen = () => {
 }
 
 const CreateOppScreen = ({route}) => {
-  const {clubName} = route.params;
+  // const {clubName} = route.params;
   const [oppName, setOppName] = useState('');
   const [oppDate, setOppDate] = useState('');
   const [oppTime, setOppTime] = useState('');
@@ -638,7 +646,7 @@ const CreateOppScreen = ({route}) => {
     setOpportunities(prevOpportunities => [
       ...prevOpportunities,
       {
-        club: clubName, //Do I need to put {} in clubName?
+        // club: clubName, //Do I need to put {} in clubName?
         name: oppName,
         date: oppDate,
         time: oppTime,
@@ -651,7 +659,7 @@ const CreateOppScreen = ({route}) => {
   }
 
   return(
-    <View style={styles.background}>
+    <View style={styles.greyBackground}>
       {/*<Button onPress={C_HomeScreen}>
         <Text style={styles.buttonText}>Back</Text>
   </Button>*/}
@@ -800,7 +808,26 @@ const styles = StyleSheet.create({
   },
   signup2Text: {
     marginBottom: 20,
-  }
+  },
+  profileIcon: {
+    // marginBottom: 20,
+    marginLeft: 270,
+  },
+  createBotton: {
+    marginBottom: 10,
+    padding: 40,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderStyle:'dashed',
+  },
+  user:{
+    color: '#13294B',
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 40,
+    textAlign: 'center',
+  },
+
 });
 
 export default App;
