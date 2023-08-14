@@ -11,7 +11,7 @@ import { Entypo } from '@expo/vector-icons';
 //Import of CSS:
 import styles from '../Style.js';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
     const [clubName, setClubName] = useState('');
     const [clubEmail, setClubEmail] = useState('');
     const [clubNum, setClubNum] = useState('');
@@ -27,20 +27,19 @@ const ProfileScreen = () => {
       console.log('Social Media:', clubSM);
       console.log('Description:', clubDes);
       
-      navigation.navigate('C_Home', {clubName});
-      navigation.navigate('C_Volunteer', {clubName});
+      navigation.navigate('C_Home');
     }
     return(
       <ScrollView style={styles.greyBackground}>
-        {/*<Button onPress={C_HomeScreen}>
-          <Text style={styles.buttonText}>Back</Text>
-    </Button>*/}
         <Text style={styles.user}>{clubName || "Club"}</Text>
-        <Text style={styles.greytitle}>Edit Profile</Text>
-        <View style={styles.profileIcon}>
-        <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
+        <TouchableOpacity >
+            <Text style={styles.link} onPress={() => navigation.navigate('C_Home')}>Cancel</Text>
+        </TouchableOpacity>
+        <Text style={styles.greytext}>Edit Profile</Text>
+        <View style={styles.editprofileIcon}>
+        <Ionicons name="person-circle" size={150} color="#13294B"/>
         </View>
-        <Text>Edit picture</Text>
+        <Text style={styles.bluetext}>Edit picture</Text>
         <Text style={styles.subtitles}>First Name</Text>
         <TextInput
           style={styles.input}
