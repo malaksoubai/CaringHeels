@@ -29,23 +29,7 @@ const C_HomeScreen = ({navigation, route}) => {
         <ScrollView></ScrollView>
       </View>
     );
-   // const {clubName} = route.params;
-    // return(
-    //   <View style={styles.background}>
-    //     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-    //       <Text>Profile</Text>
-    //     </TouchableOpacity>
-    //     <Text>Welcome back, {clubName}!</Text> {/*call the club Name from C_SignUpScreen OR C_SignInScreen*/}
-    //     <Text>Opportunities</Text>
-    //     {/*I want the opportunities once posted, to be viewed here with the ability to be deleted*/}
-    //     <TouchableOpacity onPress={() => navigation.navigate('C_Volunteer')}>
-    //       <Text>Create Volunteering Opportunity</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity onPress={() => navigation.navigate('C_Donate')}>
-    //       <Text>Donate</Text>
-    //     </TouchableOpacity>
-    //     </View>
-    // );
+
   }
 
   export default C_HomeScreen;

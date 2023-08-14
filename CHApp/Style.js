@@ -42,10 +42,21 @@ const styles = StyleSheet.create({
     input: {
       width: '100%',
       height: 40,
-      borderColor: 'gray',
+      borderColor: '#13294B',
       borderWidth: 1,
       marginBottom: 10,
       paddingHorizontal: 10,
+      borderRadius: 5,
+    },
+    box: {
+      textAlignVertical: 'top',
+      width: '100%',
+      height: 100,
+      borderColor: '#13294B',
+      borderWidth: 1,
+      marginBottom: 10,
+      paddingHorizontal: 10,
+      borderRadius: 5,
     },
     appName: {
       color: '#FFFFFF',
@@ -117,6 +128,11 @@ const styles = StyleSheet.create({
       // marginTop: 10,
       marginBottom: 40,
       textAlign: 'center',
+    },
+    picker: {
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 5,
     },
   });
 

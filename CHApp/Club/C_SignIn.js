@@ -39,7 +39,7 @@ const C_SignInScreen = ({navigation}) => {
         />
         <Text style={styles.subtitles}>Password</Text>
         <TextInput
-          style={styles.input}
+          style={styles.input} 
           placeholder="Password"
           value={cPassword}
           onChangeText={(text) => setCPassword(text)}
