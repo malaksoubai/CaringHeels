@@ -18,8 +18,8 @@ const C_SignInScreen = ({navigation}) => {
     const handleC_SignIn = () => {
       console.log('Club Email:', clubEmail);
       console.log('Password:', cPassword);
+      
       navigation.navigate('C_Home');
-  
   
     }
     return (

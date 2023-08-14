@@ -86,6 +86,10 @@ const styles = StyleSheet.create({
       // marginBottom: 20,
       marginLeft: 270,
     },
+    editprofileIcon: {
+      flex: 1,
+      alignItems: 'center',
+    },
     createButton: {
       marginBottom: 10,
       padding: 40,
@@ -100,15 +104,15 @@ const styles = StyleSheet.create({
       marginBottom: 40,
       textAlign: 'center',
     },
-    greytitle:{
+    greytext:{
       color: 'grey',
       fontSize: 15,
       // marginTop: 10,
-      marginBottom: 40,
+      marginBottom: 10,
       textAlign: 'center',
     },
-    bluetitle:{
-      color: 'grey',
+    bluetext:{
+      color: '#4B9CD3',
       fontSize: 15,
       // marginTop: 10,
       marginBottom: 40,
