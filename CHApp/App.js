@@ -525,7 +525,7 @@ const C_HomeScreen = ({navigation, route}) => {
       <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
       </View>
       <Text style={styles.user}>Welcome, {clubName || "Guest"}</Text>
-     <TouchableOpacity style={styles.createBotton} onPress={() => navigation.navigate('Create')}>
+     <TouchableOpacity style={styles.createButton} onPress={() => navigation.navigate('Create')}>
         <Text>Create a new Opportunity</Text>
         <Entypo name="circle-with-plus" size={24} color="#13294B" />      
       </TouchableOpacity>
@@ -572,45 +572,65 @@ const ProfileScreen = () => {
     navigation.navigate('C_Volunteer', {clubName});
   }
   return(
-    <View style={styles.greyBackground}>
+    <ScrollView style={styles.greyBackground}>
       {/*<Button onPress={C_HomeScreen}>
         <Text style={styles.buttonText}>Back</Text>
   </Button>*/}
-      <Text>Edit Profile</Text>
+      <Text style={styles.user}>{clubName || "Club"}</Text>
+      <Text style={styles.greytitle}>Edit Profile</Text>
+      <View style={styles.profileIcon}>
+      <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
+      </View>
+      <Text>Edit picture</Text>
+      <Text style={styles.subtitles}>First Name</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Name"
+        placeholder="Enter club name"
         value={clubName}
         onChangeText={(text) => setClubName(text)}
       />
+      <Text style={styles.subtitles}>Club Email</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Email"
+        placeholder="Enter club email"
         value={clubEmail}
         onChangeText={(text) => setClubEmail(text)}
         keyboardType="email-address"
       />
+      <Text style={styles.subtitles}>Phone Number</Text>
       <TextInput
         style={styles.input}
-        placeholder="Phone Number"
+        placeholder="Enter phone number"
         value={clubNum}
         onChangeText={(text) => setClubNum(text)}
       />
+      <Text style={styles.subtitles}>Club Website</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Website"
+        placeholder="URL"
         value={clubWeb}
         onChangeText={(text) => setClubWeb(text)}
+        keyboardType="url"
       />
+      <Text style={styles.subtitles}>Club Social Media</Text>
       <TextInput
         style={styles.input}
-        placeholder="Social Media"
+        placeholder="Enter club's social media"
         value={clubSM}
         onChangeText={(text) => setClubSM(text)}
       />
+      <Text style={styles.subtitles}>Club Password</Text>
       <TextInput
         style={styles.input}
-        placeholder="Club Description, mission, etc."
+        placeholder="*****"
+        value={clubDes}
+        onChangeText={(text) => setClubDes(text)}
+        secureTextEntry
+      />
+      <Text style={styles.subtitles}>Club Mission</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter club Description, mission, etc."
         value={clubDes}
         onChangeText={(text) => setClubDes(text)}
       />
@@ -620,7 +640,7 @@ const ProfileScreen = () => {
       >
         <Text style={styles.buttonText}>Save</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -813,7 +833,7 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     marginLeft: 270,
   },
-  createBotton: {
+  createButton: {
     marginBottom: 10,
     padding: 40,
     alignItems: 'center',
@@ -822,12 +842,25 @@ const styles = StyleSheet.create({
   },
   user:{
     color: '#13294B',
-    fontSize: 20,
+    fontSize: 30,
     marginTop: 10,
     marginBottom: 40,
     textAlign: 'center',
   },
-
+  greytitle:{
+    color: 'grey',
+    fontSize: 15,
+    // marginTop: 10,
+    marginBottom: 40,
+    textAlign: 'center',
+  },
+  bluetitle:{
+    color: 'grey',
+    fontSize: 15,
+    // marginTop: 10,
+    marginBottom: 40,
+    textAlign: 'center',
+  },
 });
 
 export default App;
