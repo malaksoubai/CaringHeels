@@ -391,7 +391,7 @@ const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
     console.log('volunteerOrDonate:', setSelectedVorDOptionsOption);
     console.log('clubLink:', setClubLink);
     console.log('clubDescription:', setClubDescription);
-    navigation.navigate('I_Home');
+    navigation.navigate('C_Home');
   };
 
   return (
@@ -432,7 +432,7 @@ const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
         keyboardType="club-link"
       />
       <Text style={styles.subtitles}>Provide a brief description of the club</Text>
-      <TextboxInput
+      <TextInput
         style={styles.input}
         placeholder="Please specify your mission"
         value={clubDescription}
