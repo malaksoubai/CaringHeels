@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  //State is used to store and manage data within a component.
-import { StyleSheet, TextInput, Text, View, Image, TouchableOpacity,ScrollView } from 'react-native';
+import { StyleSheet, TextInput, Text, View, Image, KeyboardAvoidingView, TouchableOpacity,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 // import CheckBox from '@react-native-community/checkbox';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,6 +15,12 @@ import styles from '../Style.js';
 
 
 const C_SignUpScreen = ({navigation}) => { //call upon clubName??
+
+    const handleLinkPress = () => {
+      const url = "mailto: malaksoubai03@gmail.com"; // Your URL here
+      Linking.openURL(url);
+    };
+
     const [clubName, setClubName] = useState('');
     const [clubEmail, setClubEmail] = useState('');
     const [cPassword, setCPassword] = useState('');
@@ -43,59 +49,75 @@ const C_SignUpScreen = ({navigation}) => { //call upon clubName??
     }
   
     return (
-      <View style={styles.greyBackground}>
-        <View style={styles.containerBack}>
-          <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
-            Back
-          </FontAwesome.Button>
-        </View>
-        <Text style={styles.title}>Club Sign Up</Text>
-        <Text style={styles.subtitles}>Club Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Club Name"
-          value={clubName}
-          onChangeText={(text) => setClubName(text)}
-        />
-        <Text style={styles.subtitles}>Club Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Club Email address"
-          value={clubEmail}
-          onChangeText={(text) => setClubEmail(text)}
-         keyboardType="email-address"
-        />
-        <Text style={styles.subtitles}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Create a Password"
-          value={cPassword}
-          onChangeText={(text) => setCPassword(text)}
-        />
-        <Text style={styles.subtitles}>Confirm Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm your typed Password"
-          value={cConfirmPassword}
-          onChangeText={(text) => setCConfirmPassword(text)}
-          secureTextEntry
-        />
-        {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSignUp}  
-        >
-          <Text style={styles.buttonText}>Sign up</Text>
-        </TouchableOpacity>
-        <Text>Already have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('C_SignIn')}>
-          <Text style={styles.link}>Sign in</Text>
-        </TouchableOpacity>
-    </View>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={10}>
+        <ScrollView>
+          <View style={styles.greyBackground}>
+            <View style={styles.containerBack}>
+              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+                Back
+              </FontAwesome.Button>
+            </View>
+            <Text style={styles.title}>Club Sign Up</Text>
+            <Text style={styles.subtitles}>Club Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Club Name"
+              value={clubName}
+              onChangeText={(text) => setClubName(text)}
+            />
+            <Text style={styles.subtitles}>Club Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Club Email address"
+              value={clubEmail}
+              onChangeText={(text) => setClubEmail(text)}
+            keyboardType="email-address"
+            />
+            <Text style={styles.subtitles}>Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Create a Password"
+              value={cPassword}
+              onChangeText={(text) => setCPassword(text)}
+            />
+            <Text style={styles.subtitles}>Confirm Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Confirm your typed Password"
+              value={cConfirmPassword}
+              onChangeText={(text) => setCConfirmPassword(text)}
+              secureTextEntry
+            />
+            {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleSignUp}  
+            >
+              <Text style={styles.buttonText}>Sign up</Text>
+            </TouchableOpacity>
+            <Text>Already have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('C_SignIn')}>
+              <Text style={styles.link}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.footer}>
+            <Text>For more help, please contact:</Text>
+            <TouchableOpacity onPress={handleLinkPress}>
+              <Text style={styles.email}>malaksoubai03@gmail.com</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   };
   
 export const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
+
+    const handleLinkPress = () => {
+      const url = "mailto: malaksoubai03@gmail.com"; // Your URL here
+      Linking.openURL(url);
+    };
+
     const uncAffiliatedOptions = ['Yes', 'No'];
     const handleSelectUncAffiliatedOption = (option) => {
       setSelectedUncAffiliatedOption(option);
@@ -121,60 +143,70 @@ export const C_SignUpScreen2 = ({navigation}) => { //call upon clubName??
     };
   
     return (
-      <ScrollView style={styles.greyBackground}>
-        <View style={styles.containerBack}>
-          <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_SignUp')}>
-            Back
-          </FontAwesome.Button>
-        </View>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={10}>
+        <ScrollView>
+          <View style={styles.greyBackground}>
+          <View style={styles.containerBack}>
+            <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_SignUp')}>
+              Back
+            </FontAwesome.Button>
+          </View>
+          
+          <Text style={styles.title}>Hi, </Text>
+          <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
+          <Text style={styles.subtitles}>Are you a UNC affiliated Club or Organization?</Text>
+          <RadioButton.Group onValueChange={handleSelectUncAffiliatedOption} value={selectedUncAffiliatedOption}>
+            {uncAffiliatedOptions.map((option) => (
+              <View key={option} style={styles.radioButton}>
+                <RadioButton value={option} />
+                <Text>{option}</Text>
+              </View>
+            ))}
+          </RadioButton.Group>
+    
+          <Text style={styles.subtitles}>Are you interested in posting Volunteering or Donation opportunities?</Text>
+          <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
+            {VorDOptions.map((option) => (
+              <View key={option} style={styles.radioButton}>
+                <RadioButton value={option} />
+                <Text>{option}</Text>
+              </View>
+            ))}
+          </RadioButton.Group>
+          <Text style={styles.subtitles}>Provide a link to the Club's website</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Paste URL here"
+            value={clubLink}
+            onChangeText={(text) => setClubLink(text)}
+            keyboardType="url"
+          />
+          <Text style={styles.subtitles}>Provide a brief description of the club</Text>
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={styles.box}
+            placeholder="Please specify your mission"
+            value={clubDescription}
+            onChangeText={(text) => setClubDescription(text)}
+            keyboardType="default"
+          />
         
-        <Text style={styles.title}>Hi, </Text>
-        <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
-        <Text style={styles.subtitles}>Are you a UNC affiliated Club or Organization?</Text>
-        <RadioButton.Group onValueChange={handleSelectUncAffiliatedOption} value={selectedUncAffiliatedOption}>
-          {uncAffiliatedOptions.map((option) => (
-            <View key={option} style={styles.radioButton}>
-              <RadioButton value={option} />
-              <Text>{option}</Text>
-            </View>
-          ))}
-        </RadioButton.Group>
-  
-        <Text style={styles.subtitles}>Are you interested in posting Volunteering or Donation opportunities?</Text>
-        <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
-          {VorDOptions.map((option) => (
-            <View key={option} style={styles.radioButton}>
-              <RadioButton value={option} />
-              <Text>{option}</Text>
-            </View>
-          ))}
-        </RadioButton.Group>
-        <Text style={styles.subtitles}>Provide a link to the Club's website</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Paste URL here"
-          value={clubLink}
-          onChangeText={(text) => setClubLink(text)}
-          keyboardType="url"
-        />
-        <Text style={styles.subtitles}>Provide a brief description of the club</Text>
-        <TextInput
-          multiline={true}
-          numberOfLines={10}
-          style={styles.box}
-          placeholder="Please specify your mission"
-          value={clubDescription}
-          onChangeText={(text) => setClubDescription(text)}
-          keyboardType="default"
-        />
-       
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleDone}
-        >
-          <Text style={styles.buttonText}>Done</Text>
-        </TouchableOpacity>
-      </ScrollView>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleDone}
+          >
+            <Text style={styles.buttonText}>Done</Text>
+          </TouchableOpacity>
+          </View>
+          <View style={styles.footer}>
+            <Text>For more help, please contact:</Text>
+            <TouchableOpacity onPress={handleLinkPress}>
+              <Text style={styles.email}>malaksoubai03@gmail.com</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
 };
 

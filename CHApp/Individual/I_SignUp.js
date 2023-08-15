@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  //State is used to store and manage data within a component.
-import { TextInput, Text, View, TouchableOpacity,ScrollView } from 'react-native';
+import { TextInput, Text, View, TouchableOpacity, KeyboardAvoidingView, ScrollView } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { RadioButton } from 'react-native-paper';
 import Checkbox from '../Checkbox.js';
@@ -7,6 +7,12 @@ import Checkbox from '../Checkbox.js';
 import styles from '../Style.js';
 
 const I_SignUpScreen = ({navigation}) => {
+
+    const handleLinkPress = () => {
+      const url = "mailto: malaksoubai03@gmail.com"; // Your URL here
+      Linking.openURL(url);
+    };
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -32,69 +38,84 @@ const I_SignUpScreen = ({navigation}) => {
     };
   
     return (
-      <View style={styles.greyBackground}>
-        <View style={styles.containerBack}>
-          <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
-            Back
-          </FontAwesome.Button>
-        </View>
-        
-        <Text style={styles.title}>Individual Sign Up</Text>
-        <Text style={styles.subtitles}>First Name</Text>
-        {/*<BackButton navigation={navigation} targetScreen="Start" />*/}
-        <TextInput
-          style={styles.input}
-          placeholder="Type First Name"
-          value={firstName}
-          onChangeText={(text) => setFirstName(text)}
-        />
-        <Text style={styles.subtitles}>Last Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Type Last Name"
-          value={lastName}
-          onChangeText={(text) => setLastName(text)}
-        />
-        <Text style={styles.subtitles}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Email Address"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-        />
-        <Text style={styles.subtitles}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Create a Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
-        />
-        <Text style={styles.subtitles}>Confirm Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm your typed Password"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          secureTextEntry
-        />
-        {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleSignUp}
-        >
-          <Text style={styles.buttonText}>Sign up</Text>
-        </TouchableOpacity>
-        <Text>Already have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('I_SignIn')}>
-          <Text style={styles.link}>Sign in</Text>
-        </TouchableOpacity>
-      </View>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={10}>
+        <ScrollView>
+          <View style={styles.greyBackground}>
+            <View style={styles.containerBack}>
+              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+                Back
+              </FontAwesome.Button>
+            </View>
+            
+            <Text style={styles.title}>Individual Sign Up</Text>
+            <Text style={styles.subtitles}>First Name</Text>
+            {/*<BackButton navigation={navigation} targetScreen="Start" />*/}
+            <TextInput
+              style={styles.input}
+              placeholder="Type First Name"
+              value={firstName}
+              onChangeText={(text) => setFirstName(text)}
+            />
+            <Text style={styles.subtitles}>Last Name</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Type Last Name"
+              value={lastName}
+              onChangeText={(text) => setLastName(text)}
+            />
+            <Text style={styles.subtitles}>Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Email Address"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              keyboardType="email-address"
+            />
+            <Text style={styles.subtitles}>Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Create a Password"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry
+            />
+            <Text style={styles.subtitles}>Confirm Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Confirm your typed Password"
+              value={confirmPassword}
+              onChangeText={(text) => setConfirmPassword(text)}
+              secureTextEntry
+            />
+            {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleSignUp}
+            >
+              <Text style={styles.buttonText}>Sign up</Text>
+            </TouchableOpacity>
+            <Text>Already have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('I_SignIn')}>
+              <Text style={styles.link}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.footer}>
+            <Text>For more help, please contact:</Text>
+            <TouchableOpacity onPress={handleLinkPress}>
+              <Text style={styles.email}>malaksoubai03@gmail.com</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   };
 
-export const I_SignUpScreen2 = ({navigation, route}) => { 
+export const I_SignUpScreen2 = ({navigation, route}) => {
+  
+    const handleLinkPress = () => {
+      const url = "mailto: malaksoubai03@gmail.com"; // Your URL here
+      Linking.openURL(url);
+    };
     // const {firstName} = route.params;
   
     const uncStudentOptions = ['Yes', 'No'];
@@ -152,51 +173,62 @@ export const I_SignUpScreen2 = ({navigation, route}) => {
     };
   
     return (
-      <ScrollView style={styles.greyBackground}>
-        <View style={styles.containerBack}>
-          <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('I_SignUp')}>
-            Back
-          </FontAwesome.Button>
-        </View>
-        
-        <Text style={styles.title}>Hi, </Text>
-        <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
-        <Text style={styles.subtitles}>Are you a UNC student?</Text>
-        <RadioButton.Group onValueChange={handleSelectUncStudentOption} value={selectedUncStudentOption}>
-          {uncStudentOptions.map((option) => (
-            <View key={option} style={styles.radioButton}>
-              <RadioButton value={option} />
-              <Text>{option}</Text>
-            </View>
-          ))}
-        </RadioButton.Group>
-  
-        <Text style={styles.subtitles}>Are you interested in Volunteering or Donating?</Text>
-        <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
-          {VorDOptions.map((option) => (
-            <View key={option} style={styles.radioButton}>
-              <RadioButton value={option} />
-              <Text>{option}</Text>
-            </View>
-          ))}
-        </RadioButton.Group>
-        <Text style={styles.subtitles}>What are you passionate about?</Text>
-        <Checkbox label="Children" value={isChecked1} onValueChange={handleToggleCheckbox1} />
-        <Checkbox label="Community" value={isChecked2} onValueChange={handleToggleCheckbox2} />
-        <Checkbox label="Disaster Relief" value={isChecked3} onValueChange={handleToggleCheckbox3} />
-        <Checkbox label="Education" value={isChecked4} onValueChange={handleToggleCheckbox4} />
-        <Checkbox label="Environment" value={isChecked5} onValueChange={handleToggleCheckbox5} />
-        <Checkbox label="Healthcare" value={isChecked6} onValueChange={handleToggleCheckbox6} />
-        <Checkbox label="Human Rights" value={isChecked7} onValueChange={handleToggleCheckbox7} />
-        <Checkbox label="Seniors" value={isChecked8} onValueChange={handleToggleCheckbox8} />
-  
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleDone}
-        >
-          <Text style={styles.buttonText}>Done</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={10}>
+
+        <ScrollView>
+          <View style={styles.greyBackground}>
+          <View style={styles.containerBack}>
+            <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('I_SignUp')}>
+              Back
+            </FontAwesome.Button>
+          </View>
+          
+          <Text style={styles.title}>Hi, </Text>
+          <Text style={styles.signup2Text}>We have a few more questions to set up your profile.</Text>
+          <Text style={styles.subtitles}>Are you a UNC student?</Text>
+          <RadioButton.Group onValueChange={handleSelectUncStudentOption} value={selectedUncStudentOption}>
+            {uncStudentOptions.map((option) => (
+              <View key={option} style={styles.radioButton}>
+                <RadioButton value={option} />
+                <Text>{option}</Text>
+              </View>
+            ))}
+          </RadioButton.Group>
+    
+          <Text style={styles.subtitles}>Are you interested in Volunteering or Donating?</Text>
+          <RadioButton.Group onValueChange={handleSelectVorDOptionsOption} value={selectedVorDOptionsOption}>
+            {VorDOptions.map((option) => (
+              <View key={option} style={styles.radioButton}>
+                <RadioButton value={option} />
+                <Text>{option}</Text>
+              </View>
+            ))}
+          </RadioButton.Group>
+          <Text style={styles.subtitles}>What are you passionate about?</Text>
+          <Checkbox label="Children" value={isChecked1} onValueChange={handleToggleCheckbox1} />
+          <Checkbox label="Community" value={isChecked2} onValueChange={handleToggleCheckbox2} />
+          <Checkbox label="Disaster Relief" value={isChecked3} onValueChange={handleToggleCheckbox3} />
+          <Checkbox label="Education" value={isChecked4} onValueChange={handleToggleCheckbox4} />
+          <Checkbox label="Environment" value={isChecked5} onValueChange={handleToggleCheckbox5} />
+          <Checkbox label="Healthcare" value={isChecked6} onValueChange={handleToggleCheckbox6} />
+          <Checkbox label="Human Rights" value={isChecked7} onValueChange={handleToggleCheckbox7} />
+          <Checkbox label="Seniors" value={isChecked8} onValueChange={handleToggleCheckbox8} />
+    
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleDone}
+          >
+            <Text style={styles.buttonText}>Done</Text>
+          </TouchableOpacity>
+          </View> 
+          <View style={styles.footer}>
+            <Text>For more help, please contact:</Text>
+            <TouchableOpacity onPress={handleLinkPress}>
+              <Text style={styles.email}>malaksoubai03@gmail.com</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   };
 

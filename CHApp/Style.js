@@ -35,6 +35,16 @@ const styles = StyleSheet.create({
       fontSize: 15,
       textDecorationLine: 'underline',
     },
+    startPageEmail: {
+      color: 'white',
+      fontSize: 15,
+      textDecorationLine: 'underline',
+    },
+    email: {
+      color: '#4B9CD3',
+      fontSize: 15,
+      textDecorationLine: 'underline',
+    },
     errorText: {
       color: 'red',
       marginTop: 5,
@@ -133,6 +143,17 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: 'gray',
       borderRadius: 5,
+    },
+    footer: {
+      marginTop: '30%',
+      // backgroundColor: 'grey',
+      alignItems: 'center',
+      borderTopWidth: 1,
+      borderTopColor: '#ccc',
+      marginBottom: '5%',
+      padding: '5%',
+      height: '10%',
+      justifyContent: "center",
     },
   });
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  //State is used to store and manage data within a component.
-import { StyleSheet, TextInput, Text, View, Image, TouchableOpacity,ScrollView } from 'react-native';
+import { StyleSheet, Linking,  TextInput, Text, View, KeyboardAvoidingView, Image, TouchableOpacity,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 // import CheckBox from '@react-native-community/checkbox';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -28,36 +28,34 @@ import styles from './Style.js';
 const Stack = createNativeStackNavigator();
 
 const StartScreen = ({ navigation }) => {
+    const handleLinkPress = () => {
+      const url = "mailto: malaksoubai03@gmail.com"; // Your URL here
+      Linking.openURL(url);
+    };
   return (
     <View style={styles.container}>
       <Image source={require('./assets/CaringHeels.png')} />
       <Text style={styles.appName}>CaringHeels</Text>
-      <Text style={styles.homeSubtitles}>I am a student:</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('I_SignUp')}
-      >
-        <Text style={styles.buttonText}>Sign up as an Individual</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('I_SignIn')}
       >
-        <Text style={styles.buttonText}>Sign in as an Individual</Text>
+        <Text style={styles.buttonText}>I am a student</Text>
       </TouchableOpacity>
-      <Text style={styles.homeSubtitles}>I am a club or organization:</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('C_SignUp')}
-      >
-        <Text style={styles.buttonText}>Sign up as a Club</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('C_SignIn')}
       >
-        <Text style={styles.buttonText}>Sign in as a Club</Text>
+        <Text style={styles.buttonText}>I am a club or organization</Text>
       </TouchableOpacity>
+      <View style={styles.footer}>
+        <Text>For more help, please contact:</Text>
+        <TouchableOpacity onPress={handleLinkPress}>
+          <Text style={styles.startPageEmail}>malaksoubai03@gmail.com</Text>
+        </TouchableOpacity>
+        <Text style={styles.text}>© 2023 CaringHeels. All rights reserved.</Text>
+      </View>
     </View>
   );
 };

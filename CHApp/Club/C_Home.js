@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  //State is used to store and manage data within a component.
-import { StyleSheet, TextInput, Text, View, Image, TouchableOpacity,ScrollView } from 'react-native';
+import { StyleSheet, TextInput, Text, View, Image, KeyboardAvoidingView,TouchableOpacity,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 // import CheckBox from '@react-native-community/checkbox';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -25,7 +25,7 @@ const C_HomeScreen = ({navigation, route}) => {
           <Text>Create a new Opportunity</Text>
           <Entypo name="circle-with-plus" size={24} color="#13294B" />      
         </TouchableOpacity>
-        <Text style={styles.title}>Past Opportunities</Text>
+        <Text style={styles.title}>Opportunities</Text>
         <ScrollView></ScrollView>
       </View>
     );
