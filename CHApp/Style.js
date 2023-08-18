@@ -183,11 +183,11 @@ const styles = StyleSheet.create({
       shadowOpacity: '100',
     },
     leftColumn: {
-      flex: 1,
+      flex: 2,
       marginRight: 5,
     },
     rightColumn: {
-      flex: 2,
+      flex: 3,
       marginLeft: 5,
     },
     clubName: {
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     eventTitle: {
       fontSize: 20,
       color:'#4B9CD3',
-      marginTop: 4,
+      marginBottom: 7,
     },
     notice: {
       fontSize: 12,
