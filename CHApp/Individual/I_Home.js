@@ -18,7 +18,6 @@ const Card = ({clubName, eventTitle, notice, startDate, endDate, location, tease
         <Text style={styles.date}>{startDate}</Text>
         <Text style={styles.date}>{endDate}</Text>
         <Text style={styles.location}>{location}</Text>
-        
       </View>
       <View style={styles.rightColumn}>
         <Text style={styles.clubName}>{clubName}</Text>
@@ -44,8 +43,8 @@ const I_HomeScreen = () => {
             clubName= "Hand in Hand"
             eventTitle="Fall Charity Gala"
             notice="For Volunteers"
-            startDate= "From 08/25 at 5:00 P.M."
-            endDate="To 08/25 at 10:00 P.M."
+            startDate= "08/25 at 5:00 PM"
+            endDate="08/25 at 10:00 PM"
             location="Great Hall"
             teaser="Join us for a memorable evening of giving and fun"
           />
@@ -53,8 +52,8 @@ const I_HomeScreen = () => {
             clubName= "Kids' Association"
             eventTitle="Toy Donation"
             notice="For Donors"
-            startDate= "From 08/01 at 8:00 A.M."
-            endDate="To 10/01 at 11:59 P.M."
+            startDate= "08/01 at 8:00 AM"
+            endDate="10/01 at 11:59 PM"
             location="Carmichael"
             teaser="Donate money or toys for hospital kids"
           />
@@ -62,8 +61,8 @@ const I_HomeScreen = () => {
             clubName= "BluerFuture"
             eventTitle="Blue Future"
             notice="For Donors"
-            startDate= "From 08/15 at 9:00 A.M."
-            endDate="To 09/30 at 11:59 P.M."
+            startDate= "08/15 at 9:00 AM"
+            endDate="09/30 at 11:59 PM"
             location="Remote"
             teaser="Donate money to produce eco-friendly solar-powered tables"
           />
@@ -71,8 +70,8 @@ const I_HomeScreen = () => {
             clubName= "Kids' Association"
             eventTitle="SunFlower"
             notice="For Volunteers"
-            startDate= "From 08/19 at 11:00 A.M."
-            endDate="To 08/19 at 3:00 P.M."
+            startDate= "08/19 at 11:00 AM"
+            endDate="08/19 at 3:00 PM"
             location="Lenoir"
             teaser="Let's plant Sunflowers and other plants"
           />
@@ -80,8 +79,8 @@ const I_HomeScreen = () => {
             clubName= "Youth Club"
             eventTitle="Helping Seniors"
             notice="For Volunteers"
-            startDate= "From 08/13 at 9:00 A.M."
-            endDate="To 08/13 at 10:00 P.M."
+            startDate= "08/13 at 9:00 AM"
+            endDate="08/13 at 10:00 PM"
             location="Hinton James"
             teaser="Join us to spend a wonderful day with seniors"
           />
