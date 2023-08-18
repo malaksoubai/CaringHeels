@@ -8,11 +8,13 @@ import { RadioButton } from 'react-native-paper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Entypo } from '@expo/vector-icons';
 
-import Checkbox from './Checkbox.js';
+// import Checkbox from './Checkbox.js';
 //Import of Individual Screens:
 import I_SignUpScreen, { I_SignUpScreen2 } from './Individual/I_SignUp.js';
 import I_SignInScreen from './Individual/I_SignIn.js';
 import I_HomeScreen from './Individual/I_Home.js';
+import I_ProfileScreen from './Individual/I_Profile.js';
+
 //Import of Club Screens:
 import C_SignUpScreen, { C_SignUpScreen2 } from './Club/C_SignUp.js';
 import C_SignInScreen from './Club/C_SignIn.js';
@@ -71,13 +73,13 @@ const App = () => {
         <Stack.Screen name="I_SignUp" component={I_SignUpScreen} />
         <Stack.Screen name="I_SignUp2" component={I_SignUpScreen2} />
         <Stack.Screen name="I_SignIn" component={I_SignInScreen} />
+        <Stack.Screen name="I_Profile" component={I_ProfileScreen} />
+        <Stack.Screen name="I_Home" component={I_HomeScreen} />
+
         <Stack.Screen name="C_SignUp" component={C_SignUpScreen} />
         <Stack.Screen name="C_SignUp2" component={C_SignUpScreen2} />
         <Stack.Screen name="C_SignIn" component={C_SignInScreen} />
-        <Stack.Screen name="I_Home" component={I_HomeScreen} />
-        <Stack.Screen name="C_Home" component={C_HomeScreen} 
-          //initialParams={{clubName,opportunities}}
-        />
+        <Stack.Screen name="C_Home" component={C_HomeScreen} />
         <Stack.Screen name="Create" component={CreateOppScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>

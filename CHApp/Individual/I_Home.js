@@ -19,16 +19,22 @@ const I_HomeScreen = () => {
           <View style={styles.profileIcon}>
           <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('I_Profile')}/>
           </View>
-          <Text style={styles.user}>Welcome, Guest</Text>
-          {/* <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Volunteer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Donate</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>History</Text>
-          </TouchableOpacity> */}
+          <Text style={styles.user}>John Doe</Text>
+          <View style={styles.cards}>
+            <Text>This is a post</Text>
+          </View>
+          <View style={styles.cards}>
+            <Text>This is a post</Text>
+          </View>
+          <View style={styles.cards}>
+            <Text>This is a post</Text>
+          </View>
+          <View style={styles.cards}>
+            <Text>This is a post</Text>
+          </View>
+          <View style={styles.cards}>
+            <Text>This is a post</Text>
+          </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
