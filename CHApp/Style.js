@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
     user:{
       color: '#13294B',
       fontSize: 25,
-      // marginTop: 5,
-      marginBottom: 40,
+      marginTop: 5,
+      marginBottom: 20,
       textAlign: 'center',
     },
     greytext:{
@@ -176,11 +176,25 @@ const styles = StyleSheet.create({
       borderRadius: 5, 
       paddingVertical: 20,
       paddingHorizontal: 20,
-      marginTop: 15,
+      marginBottom: 15,
       borderColor: '#d2d2d2', //or '#13294B'
       borderWidth: '1',
       shadowColor: '#d2d2d2',
       shadowOpacity: '100',
+    },
+    locoIcon: {
+      // marginTop: '30%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    locoLeft: {
+      flex: 1,
+      marginRight: 1,
+    },
+    locoRight: {
+      flex: 5,
+      marginLeft: 1,
     },
     leftColumn: {
       flex: 2,
@@ -208,7 +222,7 @@ const styles = StyleSheet.create({
     },
     location: {
       fontSize: 12,
-      marginTop: 4,
+      // marginTop: 4,
     },
     teaser: {
       fontSize: 14,
@@ -224,7 +238,16 @@ const styles = StyleSheet.create({
     timeIcon: {
       color: 'white',
     },
-
+    underLine: {
+      borderBottomColor: '#13294B',
+      marginBottom: '15%',
+      paddingBottom: 0,
+      // alignItems: 'center',
+      borderBottomWidth: 1,
+      // padding: '5%',
+      // height: '10%',
+      // justifyContent: "center",
+    }
   });
 
 export default styles; 
