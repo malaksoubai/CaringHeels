@@ -17,7 +17,10 @@ const Card = ({clubName, eventTitle, notice, startDate, endDate, location, tease
         <Text style={styles.eventTitle}>{eventTitle}</Text>
         <Text style={styles.date}>{startDate}</Text>
         <Text style={styles.date}>{endDate}</Text>
-        <Text style={styles.location}>{location}</Text>
+        <View style={styles.locoIcon}>
+          <Ionicons style={styles.locoLeft} name="location-sharp" size={16} color="#C41E3A"/>
+          <Text style={[styles.location, styles.locoRight]}>{location}</Text>
+        </View>
       </View>
       <View style={styles.rightColumn}>
         <Text style={styles.clubName}>{clubName}</Text>
@@ -38,7 +41,9 @@ const I_HomeScreen = () => {
           <View style={styles.profileIcon}>
           <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('I_Profile')}/>
           </View>
+          <View style={styles.underLine}>
           <Text style={styles.user}>John Doe</Text>
+          </View>
           <Card
             clubName= "Hand in Hand"
             eventTitle="Fall Charity Gala"

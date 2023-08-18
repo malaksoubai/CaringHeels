@@ -48,7 +48,7 @@ const ProfileScreen = ({navigation}) => {
                 Cancel
               </FontAwesome.Button>
             </View>
-          <Text style={styles.user}>{clubName || "Club"}</Text>
+            <Text style={styles.user}>{clubName || "Hand in Hand"}</Text>          
           <Text style={styles.greytext}>Edit Profile</Text>
           <View style={styles.editprofileIcon}>
           <Ionicons name="person-circle" size={150} color="#13294B"/>

@@ -20,7 +20,9 @@ const C_HomeScreen = ({navigation, route}) => {
         <View style={styles.profileIcon}>
         <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
         </View>
-        <Text style={styles.user}>Welcome, {clubName || "Guest"}</Text>
+        <View style={styles.underLine}>
+          <Text style={styles.user}>Hand in Hand</Text>
+        </View>
        <TouchableOpacity style={styles.createButton} onPress={() => navigation.navigate('Create')}>
           <Text>Create a new Opportunity</Text>
           <Entypo name="circle-with-plus" size={24} color="#13294B" />      
