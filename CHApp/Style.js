@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: '#4B9CD3',
       marginTop: 5,
-      marginLeft: 130,
+      marginLeft: 100,
     },
     timeIcon: {
       color: 'white',
