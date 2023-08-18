@@ -61,7 +61,7 @@ const I_HomeScreen = () => {
             clubName= "BluerFuture"
             eventTitle="Blue Future"
             notice="For Donors"
-            startDate= "08/15 at 9:00 A.M."
+            startDate= "08/15 at 9:00 AM"
             endDate="09/30 at 11:59 PM"
             location="Remote"
             teaser="Donate money to produce eco-friendly solar-powered tables"

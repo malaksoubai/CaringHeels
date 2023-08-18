@@ -16,7 +16,7 @@ import styles from '../Style.js';
 const C_HomeScreen = ({navigation, route}) => {
     const { clubName } = route.params || {}; // Get the clubName from route.params
     return(
-      <View style={styles.greyBackground}>
+      <View style={styles.iHomeBG}>
         <View style={styles.profileIcon}>
         <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
         </View>
