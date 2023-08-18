@@ -44,11 +44,13 @@ const ProfileScreen = ({navigation}) => {
         <ScrollView>
           <View style={styles.greyBackground}>
           <View style={styles.containerBack}>
-              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_Home')}>
                 Cancel
               </FontAwesome.Button>
             </View>
-            <Text style={styles.user}>{clubName || "Hand in Hand"}</Text>          
+            <View style={styles.underLine}>
+              <Text style={styles.user}>{clubName || "Hand in Hand"}</Text>          
+            </View>
           <Text style={styles.greytext}>Edit Profile</Text>
           <View style={styles.editprofileIcon}>
           <Ionicons name="person-circle" size={150} color="#13294B"/>

@@ -13,23 +13,57 @@ import Checkbox from '../Checkbox.js';
 //Import of CSS:
 import styles from '../Style.js';
 
+const Card = ({clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
+  return (
+    <View style={styles.cards}>
+      <View style={styles.leftColumn}>
+        <Text style={styles.eventTitle}>{eventTitle}</Text>
+        <Text style={styles.date}>{startDate}</Text>
+        <Text style={styles.date}>{endDate}</Text>
+        <View style={styles.locoIcon}>
+          <Ionicons style={styles.locoLeft} name="location-sharp" size={16} color="#C41E3A"/>
+          <Text style={[styles.location, styles.locoRight]}>{location}</Text>
+        </View>
+      </View>
+      <View style={styles.rightColumn}>
+        <Text style={styles.clubName}>{clubName}</Text>
+        <Text style={styles.notice}>{notice}</Text>
+        <Text style={styles.teaser}>{teaser}</Text>
+        <TouchableOpacity><Text style={styles.more}>Learn more</Text></TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 const C_HomeScreen = ({navigation, route}) => {
     const { clubName } = route.params || {}; // Get the clubName from route.params
     return(
-      <View style={styles.iHomeBG}>
-        <View style={styles.profileIcon}>
-        <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
+      <ScrollView>
+        <View style={styles.iHomeBG}>
+          <View style={styles.profileIcon}>
+          <Ionicons name="person-circle" size={50} color="#13294B" onPress={() => navigation.navigate('Profile')}/>
+          </View>
+          <View style={styles.underLine}>
+            <Text style={styles.user}>Hand in Hand</Text>
+          </View>
+          <TouchableOpacity style={styles.createButton} onPress={() => navigation.navigate('Create')}>
+            <Text>Create a new Opportunity</Text>
+            <Entypo name="circle-with-plus" size={24} color="#13294B" />      
+          </TouchableOpacity>
+          <View style={styles.underLine}>
+            <Text style={styles.opp}>Opportunities</Text>
+          </View>
+          <Card
+              clubName= "Hand in Hand"
+              eventTitle="Fall Charity Gala"
+              notice="For Volunteers"
+              startDate= "08/25 at 5:00 PM"
+              endDate="08/25 at 10:00 PM"
+              location="Great Hall"
+              teaser="Join us for a memorable evening of giving and fun"
+          />
         </View>
-        <View style={styles.underLine}>
-          <Text style={styles.user}>Hand in Hand</Text>
-        </View>
-       <TouchableOpacity style={styles.createButton} onPress={() => navigation.navigate('Create')}>
-          <Text>Create a new Opportunity</Text>
-          <Entypo name="circle-with-plus" size={24} color="#13294B" />      
-        </TouchableOpacity>
-        <Text style={styles.title}>Opportunities</Text>
-        <ScrollView></ScrollView>
-      </View>
+      </ScrollView>
     );
 
   }
