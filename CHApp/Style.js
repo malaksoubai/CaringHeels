@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     },
     greyBackground: {
       flex: 1,
+      color: '#F8F8F8',
       // alignItems: 'right',
       // justifyContent: 'flex-start',
       margin: 50,
@@ -117,11 +118,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       borderWidth: 2,
       borderStyle:'dashed',
+      borderRadius: '5'
     },
     user:{
       color: '#13294B',
-      fontSize: 30,
-      marginTop: 10,
+      fontSize: 25,
+      // marginTop: 5,
       marginBottom: 40,
       textAlign: 'center',
     },
@@ -154,6 +156,20 @@ const styles = StyleSheet.create({
       padding: '5%',
       height: '10%',
       justifyContent: "center",
+    },
+    cards: {
+      // marginTop: '30%',
+      backgroundColor: 'white',
+      alignItems: 'center',
+      verticalAlign: 'center',
+      borderRadius: '5', 
+      paddingVertical: 10,
+      paddingHorizontal: 30,
+      marginTop: 15,
+      borderColor: '#d2d2d2', //or '#13294B'
+      borderWidth: '1',
+      shadowColor: '#d2d2d2',
+      shadowOpacity: '100',
     },
   });
 
