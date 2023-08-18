@@ -128,6 +128,12 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       textAlign: 'center',
     },
+    opp:{
+      color: '#13294B',
+      fontSize: 25,
+      marginTop: 15,
+      marginBottom: 15,
+    },
     greytext:{
       color: 'grey',
       fontSize: 15,

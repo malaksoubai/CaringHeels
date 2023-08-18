@@ -56,13 +56,13 @@ const CreateOppScreen = ({navigation, route}) => {
           keyboardShouldPersistTaps="handled">
           <View style={styles.greyBackground}>
             <View style={styles.containerBack}>
-              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('Start')}>
+              <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_Home')}>
                 Cancel
               </FontAwesome.Button>
             </View>
-            <Text style={styles.user}>{clubName || "Guest"}
-            </Text>
-            
+            <View style={styles.underLine}>
+              <Text style={styles.user}>{clubName || "Hand in Hand"}</Text>
+            </View>            
             <Text style={styles.greytext}>Create new opportunity</Text>
             <Text style={styles.subtitles}>Opportunity title</Text>
             <TextInput
