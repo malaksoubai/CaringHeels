@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
     },
     profileIcon: {
       // marginBottom: 20,
-      marginLeft: 270,
+      marginTop: 30,
+      marginLeft: 300,
     },
     editprofileIcon: {
       flex: 1,
@@ -157,20 +158,73 @@ const styles = StyleSheet.create({
       height: '10%',
       justifyContent: "center",
     },
+    iHomeBG: {
+      flex: 1,
+      color: '#F8F8F8',
+      // alignItems: 'right',
+      // justifyContent: 'flex-start',
+      margin: 20,
+    },
     cards: {
       // marginTop: '30%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+ 
       backgroundColor: 'white',
       alignItems: 'center',
-      verticalAlign: 'center',
-      borderRadius: '5', 
-      paddingVertical: 10,
-      paddingHorizontal: 30,
+      // verticalAlign: 'center',
+      borderRadius: 5, 
+      paddingVertical: 20,
+      paddingHorizontal: 20,
       marginTop: 15,
       borderColor: '#d2d2d2', //or '#13294B'
       borderWidth: '1',
       shadowColor: '#d2d2d2',
       shadowOpacity: '100',
     },
+    leftColumn: {
+      flex: 1,
+      marginRight: 5,
+    },
+    rightColumn: {
+      flex: 2,
+      marginLeft: 5,
+    },
+    clubName: {
+      fontSize: 14,
+      marginBottom: 10,
+    },
+    eventTitle: {
+      fontSize: 20,
+      color:'#4B9CD3',
+      marginTop: 4,
+    },
+    notice: {
+      fontSize: 12,
+      marginTop: 10,
+    },
+    date: {
+      fontSize: 12,
+    },
+    location: {
+      fontSize: 12,
+      marginTop: 4,
+    },
+    teaser: {
+      fontSize: 14,
+      marginTop: 4,
+      fontStyle: 'italic',
+    },
+    more: {
+      fontSize: 14,
+      color: '#4B9CD3',
+      marginTop: 5,
+      marginLeft: 130,
+    },
+    timeIcon: {
+      color: 'white',
+    },
+
   });
 
 export default styles; 
