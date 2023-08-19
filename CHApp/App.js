@@ -15,6 +15,7 @@ import I_SignInScreen from './Individual/I_SignIn.js';
 import I_HomeScreen, {Card} from './Individual/I_Home.js';
 import I_ProfileScreen from './Individual/I_Profile.js';
 import I_MoreScreen from './Individual/I_more.js';
+import I_ClubScreen from './Individual/I_Club.js';
 
 //Import of Club Screens:
 import C_SignUpScreen, { C_SignUpScreen2 } from './Club/C_SignUp.js';
@@ -78,6 +79,7 @@ const App = () => {
         <Stack.Screen name="I_Home" component={I_HomeScreen} />
         <Stack.Screen name="Card" component={Card} />
         <Stack.Screen name="I_More" component={I_MoreScreen} />
+        <Stack.Screen name="I_Club" component={I_ClubScreen} />
 
         <Stack.Screen name="C_SignUp" component={C_SignUpScreen} />
         <Stack.Screen name="C_SignUp2" component={C_SignUpScreen2} />

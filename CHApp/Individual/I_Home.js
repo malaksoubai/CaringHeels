@@ -12,6 +12,20 @@ import I_MoreScreen from './I_more.js';
 import styles from '../Style.js';
 
 export const Card = ({navigation, clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
+  const navigateToMoreScreen = () => {
+    navigation.navigate('I_More', {
+      data:{
+        clubName,
+        eventTitle,
+        notice,
+        startDate,
+        endDate,
+        location,
+        teaser,
+      }
+    });
+  };
+
   return (
     <View style={styles.cards}>
       <View style={styles.leftColumn}>
@@ -27,6 +41,9 @@ export const Card = ({navigation, clubName, eventTitle, notice, startDate, endDa
         <Text style={styles.clubName}>{clubName}</Text>
         <Text style={styles.notice}>{notice}</Text>
         <Text style={styles.teaser}>{teaser}</Text>
+        <TouchableOpacity onPress={navigateToMoreScreen}>
+        <Text style={styles.more}>Learn more</Text>
+      </TouchableOpacity>
         {/* <TouchableOpacity onPress={() => navigation.navigate('I_More')}>
             <Text style={styles.more}>Learn more</Text>
         </TouchableOpacity> */}
@@ -48,17 +65,15 @@ const I_HomeScreen = ({navigation}) => {
           <Text style={styles.user}>John Doe</Text>
           </View>
           <Card
+            navigation={navigation} 
             clubName= "Hand in Hand"
             eventTitle="Fall Charity Gala"
             notice="For Volunteers"
             startDate= "08/25 at 5:00 PM"
             endDate="08/25 at 10:00 PM"
             location="Great Hall"
-            teaser="Join us for a memorable evening of giving and fun"
+            teaser="Join us for a memorable evening of giving and fun"  
           />
-          <TouchableOpacity onPress={() => navigation.navigate('I_More')}>
-            <Text style={styles.more}>Learn more</Text>
-          </TouchableOpacity>
           <Card
             clubName= "Kids' Association"
             eventTitle="Toy Donation"

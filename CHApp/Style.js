@@ -188,22 +188,7 @@ const styles = StyleSheet.create({
       shadowColor: '#d2d2d2',
       shadowOpacity: '100',
     },
-    learnCard: {
-      marginTop: '15%',
-      marginLeft:'5%',
-      marginRight:'5%',
-      backgroundColor: 'white',
-      alignItems: 'center',
-      // verticalAlign: 'center',
-      borderRadius: 5, 
-      paddingVertical: 300,
-      paddingHorizontal: 20,
-      marginBottom: '15%',
-      borderColor: '#13294B',
-      borderWidth: '1',
-      // shadowColor: '#d2d2d2',
-      // shadowOpacity: '100',
-    },
+  
     locoIcon: {
       // marginTop: '30%',
       flexDirection: 'row',
@@ -269,7 +254,36 @@ const styles = StyleSheet.create({
       // padding: '5%',
       // height: '10%',
       // justifyContent: "center",
-    }
+    },
+    text: {
+      fontSize: 16,
+      marginBottom: 15,
+    },
+    oppTitle: {
+      fontSize: 24,
+      textAlign: 'center',
+      color:'#7BAFD4',
+      marginTop: 20,
+      marginBottom: 30,
+    },
+    learnCard: {
+      // width: '80%',
+      flex: 1,
+      marginTop: 0,
+      justifyContent: 'center',
+      padding: 20,
+      backgroundColor: '#FFFFFF', // White background color
+      borderRadius: 5,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+    containerBackii: {
+      marginTop: 30,
+      width: '30%',
+    },
   });
 
 export default styles; 
