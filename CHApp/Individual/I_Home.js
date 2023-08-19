@@ -8,9 +8,10 @@ import { RadioButton } from 'react-native-paper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Entypo } from '@expo/vector-icons';
 
+import I_MoreScreen from './I_more.js';
 import styles from '../Style.js';
 
-const Card = ({clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
+export const Card = ({navigation, clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
   return (
     <View style={styles.cards}>
       <View style={styles.leftColumn}>
@@ -26,13 +27,15 @@ const Card = ({clubName, eventTitle, notice, startDate, endDate, location, tease
         <Text style={styles.clubName}>{clubName}</Text>
         <Text style={styles.notice}>{notice}</Text>
         <Text style={styles.teaser}>{teaser}</Text>
-        <TouchableOpacity><Text style={styles.more}>Learn more</Text></TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('I_More')}>
+            <Text style={styles.more}>Learn more</Text>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
 };
 
-const I_HomeScreen = () => {
+const I_HomeScreen = ({navigation}) => {
     return(
       <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={10}>
 
@@ -53,6 +56,9 @@ const I_HomeScreen = () => {
             location="Great Hall"
             teaser="Join us for a memorable evening of giving and fun"
           />
+          <TouchableOpacity onPress={() => navigation.navigate('I_More')}>
+            <Text style={styles.more}>Learn more</Text>
+          </TouchableOpacity>
           <Card
             clubName= "Kids' Association"
             eventTitle="Toy Donation"
@@ -95,4 +101,4 @@ const I_HomeScreen = () => {
     );
   }
 
-  export default I_HomeScreen;
+export default I_HomeScreen;
