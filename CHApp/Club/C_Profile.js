@@ -47,10 +47,10 @@ const ProfileScreen = ({navigation}) => {
               <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('C_Home')}>
                 Cancel
               </FontAwesome.Button>
-            </View>
-            <View style={styles.underLine}>
+          </View>
+          <View style={styles.underLine}>
               <Text style={styles.user}>{clubName || "Hand in Hand"}</Text>          
-            </View>
+          </View>
           <Text style={styles.greytext}>Edit Profile</Text>
           <View style={styles.editprofileIcon}>
           <Ionicons name="person-circle" size={150} color="#13294B"/>

@@ -9,8 +9,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Entypo } from '@expo/vector-icons';
 
 import Checkbox from '../Checkbox.js';
-import { Card } from './I_Home.js'
-
+import I_CardComponent from './I_Card.js';
 import styles from '../Style.js';
 
 const I_MoreScreen = ({ navigation, route }) => {
@@ -21,7 +20,7 @@ const I_MoreScreen = ({ navigation, route }) => {
         <View style={styles.iHomeBG}>
             <View style={styles.containerBackii}>
                 <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('I_Home')}>
-                    Cancel
+                    Back
                 </FontAwesome.Button>
             </View>
             <View style={styles.underLine}>
@@ -40,7 +39,9 @@ const I_MoreScreen = ({ navigation, route }) => {
                     The club should be able to return to a new line and write extensively. 
                     By writing this I am setting a limit number for characters that the host cannot go over. 
                 </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('I_Club')}><Text style={styles.link}>Learn more about {data.clubName}</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('I_Club')}>
+                    <Text style={styles.link}>Learn more about {data.clubName}</Text>
+                </TouchableOpacity>
                 {/* Include other data fields here */}
             </View>
         </View>

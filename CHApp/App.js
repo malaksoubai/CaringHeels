@@ -12,7 +12,8 @@ import { Entypo } from '@expo/vector-icons';
 //Import of Individual Screens:
 import I_SignUpScreen, { I_SignUpScreen2 } from './Individual/I_SignUp.js';
 import I_SignInScreen from './Individual/I_SignIn.js';
-import I_HomeScreen, {Card} from './Individual/I_Home.js';
+import I_HomeScreen from './Individual/I_Home.js';
+import I_Card from './Individual/I_Card.js';
 import I_ProfileScreen from './Individual/I_Profile.js';
 import I_MoreScreen from './Individual/I_more.js';
 import I_ClubScreen from './Individual/I_Club.js';
@@ -25,6 +26,7 @@ import ProfileScreen from './Club/C_Profile.js';
 import CreateOppScreen from './Club/C_Create.js';
 //Import of CSS:
 import styles from './Style.js';
+import I_CardComponent from './Individual/I_Card.js';
 
 //keyboardType="email-address"
 
@@ -77,7 +79,7 @@ const App = () => {
         <Stack.Screen name="I_SignIn" component={I_SignInScreen} />
         <Stack.Screen name="I_Profile" component={I_ProfileScreen} />
         <Stack.Screen name="I_Home" component={I_HomeScreen} />
-        <Stack.Screen name="Card" component={Card} />
+        <Stack.Screen name="I_Card" component={I_CardComponent} />
         <Stack.Screen name="I_More" component={I_MoreScreen} />
         <Stack.Screen name="I_Club" component={I_ClubScreen} />
 
