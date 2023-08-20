@@ -287,10 +287,10 @@ const styles = StyleSheet.create({
     },
     clubDescriptionTitle: {
       fontSize: 20,
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
       marginTop: 20,
       marginBottom: 10,
-      textAlign: 'center',
+      // textAlign: 'center',
     },
     clubDescriptionText: {
       fontSize: 16,

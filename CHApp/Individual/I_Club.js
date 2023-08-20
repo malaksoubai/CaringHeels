@@ -16,7 +16,7 @@ import styles from '../Style.js';
 
 const I_ClubScreen = ({ navigation }) => {
     return (
-        <View style={styles.iHomeBG}>
+        <ScrollView style={styles.iHomeBG}>
             <View style={styles.containerBackii}>
                 <FontAwesome.Button name="chevron-left" style={styles.backButton} onPress={() => navigation.navigate('I_More')}>
                     Back
@@ -28,6 +28,7 @@ const I_ClubScreen = ({ navigation }) => {
             <View style={styles.editprofileIcon}>
                 <Ionicons name="person-circle" size={150} color="#13294B"/>
             </View>
+            <Text style={styles.clubDescriptionTitle}>Club Description</Text>
             <Text style={styles.clubDescriptionText}>
                 This text will include a full description provided by the club. 
                 Examples of what they can include are their aspirations, their mission, their goal, 
@@ -41,7 +42,17 @@ const I_ClubScreen = ({ navigation }) => {
                 Clubs can add links to their Instagram, Facebook, or any other accounts they want to share with the public.
                 This should be different than the website account they provide below.
             </Text>
-        </View>
+            <Text style={styles.clubDescriptionTitle}>Club's Email</Text>
+            <Text style={styles.clubDescriptionText}>handinhand@gmail.com</Text>
+            <Text style={styles.clubDescriptionTitle}>Club's Website</Text>
+            <Text style={styles.link}>https://handinhand</Text>
+            <Text style={styles.clubDescriptionTitle}>Club's Social Media</Text>
+            <Text style={styles.clubDescriptionText}>ig: @handinhand</Text>
+            <Text style={styles.clubDescriptionTitle}>Representative information</Text>
+            <Text style={styles.clubDescriptionText}>Name:  John Doe</Text>
+            <Text style={styles.clubDescriptionText}>Phone Number: +1 000 000 0000</Text>
+            <Text style={styles.clubDescriptionText}>Email:  johndoe@gmail.com</Text>
+        </ScrollView>
     );
   };
   
