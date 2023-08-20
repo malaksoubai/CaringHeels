@@ -22,6 +22,7 @@ import I_ClubScreen from './Individual/I_Club.js';
 import C_SignUpScreen, { C_SignUpScreen2 } from './Club/C_SignUp.js';
 import C_SignInScreen from './Club/C_SignIn.js';
 import C_HomeScreen from './Club/C_Home.js';
+import C_MoreScreen from './Club/C_more.js';
 import ProfileScreen from './Club/C_Profile.js';
 import CreateOppScreen from './Club/C_Create.js';
 //Import of CSS:
@@ -87,6 +88,7 @@ const App = () => {
         <Stack.Screen name="C_SignUp2" component={C_SignUpScreen2} />
         <Stack.Screen name="C_SignIn" component={C_SignInScreen} />
         <Stack.Screen name="C_Home" component={C_HomeScreen} />
+        <Stack.Screen name="C_More" component={C_MoreScreen} />
         <Stack.Screen name="Create" component={CreateOppScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
