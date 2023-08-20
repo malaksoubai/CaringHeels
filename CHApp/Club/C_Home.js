@@ -9,11 +9,24 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Entypo } from '@expo/vector-icons';
 
 import Checkbox from '../Checkbox.js';
-
+import C_MoreScreen from './C_more.js';
 //Import of CSS:
 import styles from '../Style.js';
 
-const Card = ({clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
+const Card = ({navigation, clubName, eventTitle, notice, startDate, endDate, location, teaser}) => {
+  const navigateToMoreScreen = () => {
+    navigation.navigate('C_More', {
+      data:{
+        clubName,
+        eventTitle,
+        notice,
+        startDate,
+        endDate,
+        location,
+        teaser,
+      }
+    });
+  };
   return (
     <View style={styles.cards}>
       <View style={styles.leftColumn}>
@@ -29,7 +42,12 @@ const Card = ({clubName, eventTitle, notice, startDate, endDate, location, tease
         <Text style={styles.clubName}>{clubName}</Text>
         <Text style={styles.notice}>{notice}</Text>
         <Text style={styles.teaser}>{teaser}</Text>
-        <TouchableOpacity><Text style={styles.more}>Learn more</Text></TouchableOpacity>
+        <TouchableOpacity onPress={navigateToMoreScreen}>
+        <Text style={styles.more}>Learn more</Text>
+       </TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('I_More')}>
+            <Text style={styles.more}>Learn more</Text>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
