@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     },
     link: {
       color: '#007FAE',
+      // textAlign: 'right',
       fontSize: 15,
       textDecorationLine: 'underline',
     },
@@ -247,7 +248,7 @@ const styles = StyleSheet.create({
     },
     underLine: {
       borderBottomColor: '#13294B',
-      marginBottom: '15%',
+      marginBottom: 15,
       paddingBottom: 0,
       // alignItems: 'center',
       borderBottomWidth: 1,
@@ -284,6 +285,18 @@ const styles = StyleSheet.create({
       marginTop: 30,
       width: '30%',
     },
-  });
+    clubDescriptionTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginTop: 20,
+      marginBottom: 10,
+      textAlign: 'center',
+    },
+    clubDescriptionText: {
+      fontSize: 16,
+      marginBottom: 20,
+      textAlign: 'left',
+    },
+});
 
 export default styles; 
